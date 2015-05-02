@@ -7,7 +7,7 @@
         <!--GameViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="GameViewController" customClass="ViewController" customModule="Socialables" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="GameViewController" customClass="GameViewController" customModule="Socialables" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -73,19 +73,19 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="cardImage" destination="IiW-ft-GIp" id="YuG-a5-rxu"/>
-                        <outlet property="cardRule" destination="kue-Tj-9k3" id="skh-Of-2by"/>
-                        <outlet property="cardTitle" destination="Xbd-st-SpZ" id="YGQ-tg-HY3"/>
+                        <outlet property="cardImage" destination="IiW-ft-GIp" id="Wc4-yy-74j"/>
+                        <outlet property="cardRule" destination="kue-Tj-9k3" id="3p6-JQ-Qib"/>
+                        <outlet property="cardTitle" destination="Xbd-st-SpZ" id="G9m-LZ-6Ao"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1363" y="679"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav Controller-->
         <scene sceneID="ntr-XV-EOC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h9d-tT-NdA" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h9d-tT-NdA" customClass="NavController" customModule="Socialables" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kWc-fb-426">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -93,7 +93,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="WYL-pL-s0W"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="cze-1D-wmb"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vdJ-OI-Ctb" userLabel="First Responder" sceneMemberID="firstResponder"/>

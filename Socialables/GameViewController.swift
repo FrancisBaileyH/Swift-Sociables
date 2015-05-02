@@ -9,7 +9,7 @@
 import UIKit
 
 
-class ViewController: UIViewController, ENSideMenuDelegate {
+class GameViewController: UIViewController, ENSideMenuDelegate {
 
     @IBOutlet weak var cardImage : UIImageView!
     @IBOutlet weak var cardRule : UILabel!
@@ -64,7 +64,7 @@ class ViewController: UIViewController, ENSideMenuDelegate {
     
     func sideMenuShouldOpenSideMenu() -> Bool {
         println("sideMenuShouldOpenSideMenu")
-        return false
+        return true
     }
     
     
