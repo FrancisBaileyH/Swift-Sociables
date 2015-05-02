@@ -21,6 +21,11 @@ import UIKit
 
 class MenuTableViewController: UITableViewController {
     var selectedMenuItem : Int = 0
+    
+    
+    let menuItems = [ "New Game", "Rule Editor", "Settings" ]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,7 +55,7 @@ class MenuTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        return 3
+        return menuItems.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -60,13 +65,13 @@ class MenuTableViewController: UITableViewController {
         if (cell == nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "CELL")
             cell!.backgroundColor = UIColor.clearColor()
-            cell!.textLabel?.textColor = UIColor.darkGrayColor()
+            cell!.textLabel?.textColor = UIColor.whiteColor()
             let selectedBackgroundView = UIView(frame: CGRectMake(0, 0, cell!.frame.size.width, cell!.frame.size.height))
             selectedBackgroundView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
             cell!.selectedBackgroundView = selectedBackgroundView
         }
         
-        cell!.textLabel?.text = "ViewController #\(indexPath.row+1)"
+        cell!.textLabel?.text = menuItems[indexPath.row]
         
         return cell!
     }
@@ -79,30 +84,39 @@ class MenuTableViewController: UITableViewController {
         
         println("did select row: \(indexPath.row)")
         
-        if (indexPath.row == selectedMenuItem) {
+        /*if (indexPath.row == selectedMenuItem) {
             return
-        }
+        }*/
         selectedMenuItem = indexPath.row
         
         
         //Present new view controller
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
-        var destViewController : UIViewController
+        var destViewController : UIViewController?
+        
+        
         switch (indexPath.row) {
         case 0:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController") as! UIViewController
+            sideMenuController()?.sideMenu?.delegate?.nonSegueEventDidFire!("New Game")
+            println(sideMenuController()?.sideMenu)
+            //destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController") as? UIViewController
             break
         case 1:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController2")as! UIViewController
+            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController2") as? UIViewController
             break
         case 2:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController3")as! UIViewController
+            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController3") as? UIViewController
             break
         default:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController4") as! UIViewController
+            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController4") as? UIViewController
             break
         }
-        sideMenuController()?.setContentViewController(destViewController)
+        
+        if let controller = destViewController {
+            sideMenuController()?.setContentViewController(controller)
+        } else {
+            sideMenuController()?.sideMenu?.hideSideMenu()
+        }
     }
     
     

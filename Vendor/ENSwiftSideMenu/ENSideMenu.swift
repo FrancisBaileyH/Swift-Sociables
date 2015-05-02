@@ -12,6 +12,7 @@ import UIKit
     optional func sideMenuWillOpen()
     optional func sideMenuWillClose()
     optional func sideMenuShouldOpenSideMenu () -> Bool
+    optional func nonSegueEventDidFire(action: AnyObject)
 }
 
 @objc public protocol ENSideMenuProtocol {

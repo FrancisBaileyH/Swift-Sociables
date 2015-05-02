@@ -23,7 +23,6 @@ class GameViewController: UIViewController, ENSideMenuDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         var leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector( "handleCardSwipe:"))
         var rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector( "handleCardSwipe:"))
@@ -38,13 +37,10 @@ class GameViewController: UIViewController, ENSideMenuDelegate {
     }
     
     
-    func setContentViewController(contentViewController: UIViewController) {
-        
-    }
+
   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-
     }
 
     
@@ -53,21 +49,21 @@ class GameViewController: UIViewController, ENSideMenuDelegate {
     }
     
     
-    // MARK: - ENSideMenu Delegate
-    func sideMenuWillOpen() {
-        println("sideMenuWillOpen")
-    }
-    
-    func sideMenuWillClose() {
-        println("sideMenuWillClose")
-    }
-    
-    func sideMenuShouldOpenSideMenu() -> Bool {
-        println("sideMenuShouldOpenSideMenu")
-        return true
+    /*
+     * Handle menu events that do not result in a change of view Controllers
+    */
+    func nonSegueEventDidFire(action: AnyObject) {
+        let event = action as! String
+
+        if event == "New Game" {
+            self.startNewGame()
+        }
     }
     
     
+    /*
+     * When a swipe event is fired, run appropriate actions against card deck
+    */
     func handleCardSwipe( sender: UISwipeGestureRecognizer )
     {
         var card : Card?
@@ -100,14 +96,19 @@ class GameViewController: UIViewController, ENSideMenuDelegate {
             var alert = UIAlertController(title: "Gameover!", message: "You've reached the end of the deck. Did you want to play another round?", preferredStyle: UIAlertControllerStyle.Alert)
             
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: handleNewGame ))
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: handleNewGameOkayButtonPressed))
             self.presentViewController(alert, animated: true, completion: nil)
         }
         
     }
     
     
-    func handleNewGame( alert: UIAlertAction! )
+    func handleNewGameOkayButtonPressed( alert: UIAlertAction? ) {
+        self.startNewGame()
+    }
+    
+    
+    func startNewGame()
     {
         self.deck.shuffle()
         self.cardImage.image = UIImage( named: "top" )
