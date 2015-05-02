@@ -20,7 +20,7 @@ import Foundation
 import UIKit
 
 class MenuTableViewController: UITableViewController {
-    var selectedMenuItem : Int = 0
+  
     
     
     let menuItems = [ "New Game", "Rule Editor", "Settings" ]
@@ -38,7 +38,6 @@ class MenuTableViewController: UITableViewController {
         // Preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
         
-        tableView.selectRowAtIndexPath(NSIndexPath(forRow: selectedMenuItem, inSection: 0), animated: false, scrollPosition: .Middle)
     }
     
     override func didReceiveMemoryWarning() {
@@ -82,38 +81,37 @@ class MenuTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        println("did select row: \(indexPath.row)")
-        
-        /*if (indexPath.row == selectedMenuItem) {
-            return
-        }*/
-        selectedMenuItem = indexPath.row
         
         
         //Present new view controller
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
-        var destViewController : UIViewController?
         
+        
+        var destViewController : UIViewController?
         
         switch (indexPath.row) {
         case 0:
-            sideMenuController()?.sideMenu?.delegate?.nonSegueEventDidFire!("New Game")
-            println(sideMenuController()?.sideMenu)
+            sideMenuController()?.sideMenu?.delegate?.nonSegueEventDidFire?("New Game")
             //destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController") as? UIViewController
             break
         case 1:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController2") as? UIViewController
+            
+            //sideMenuController()?.sideMenu?.
+            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("RuleCollectionViewController") as? UIViewController
+
+         
+            
             break
         case 2:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController3") as? UIViewController
+            //destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController3") as? UIViewController
             break
         default:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController4") as? UIViewController
+           // destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController4") as? UIViewController
             break
         }
         
         if let controller = destViewController {
-            sideMenuController()?.setContentViewController(controller)
+            sideMenuController()?.sideMenu?.delegate?.segueEventDidFire?(controller)
         } else {
             sideMenuController()?.sideMenu?.hideSideMenu()
         }

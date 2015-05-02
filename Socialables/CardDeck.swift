@@ -27,6 +27,10 @@ class CardDeck
     
     
     
+    static let sharedInstance = CardDeck()
+    
+    
+    
     init()
     {
         // build deck

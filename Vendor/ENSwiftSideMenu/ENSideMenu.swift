@@ -13,6 +13,7 @@ import UIKit
     optional func sideMenuWillClose()
     optional func sideMenuShouldOpenSideMenu () -> Bool
     optional func nonSegueEventDidFire(action: AnyObject)
+    optional func segueEventDidFire(controller: UIViewController)
 }
 
 @objc public protocol ENSideMenuProtocol {
@@ -71,7 +72,7 @@ public extension UIViewController {
     
     internal func topMostController () -> ENSideMenuProtocol? {
         var topController : UIViewController? = UIApplication.sharedApplication().keyWindow?.rootViewController
-        println(topController)
+
         while (topController?.presentedViewController is ENSideMenuProtocol) {
             topController = topController?.presentedViewController
         }

@@ -19,17 +19,25 @@ import Foundation
 
 import UIKit
 
+
+protocol NavControllerDelegate {
+    func menuEventDidFire(action: AnyObject)
+}
+
+
+
 class NavController: ENSideMenuNavigationController, ENSideMenuDelegate {
+    
+    var customDelegate : NavControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         sideMenu = ENSideMenu(sourceView: self.view, menuTableViewController: MenuTableViewController(), menuPosition:.Left)
         sideMenu?.delegate = self 
-        sideMenu?.menuWidth = 180.0 // optional, default is 160
-        //sideMenu?.bouncingEnabled = false
+        sideMenu?.menuWidth = 180.0
+        sideMenu?.bouncingEnabled = false
         
-        // make navigation bar showing over side menu
         view.bringSubviewToFront(navigationBar)
     }
     
@@ -38,22 +46,17 @@ class NavController: ENSideMenuNavigationController, ENSideMenuDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - ENSideMenu Delegate
-    func sideMenuWillOpen() {
-        println("sideMenuWillOpen")
+    
+    func segueEventDidFire(controller: UIViewController) {
+        sideMenu?.hideSideMenu()
+        pushViewController(controller, animated: true)
     }
     
-    func sideMenuWillClose() {
-        println("sideMenuWillClose")
-    }
     
-    /*
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+    func nonSegueEventDidFire(action: AnyObject) {
+        customDelegate?.menuEventDidFire(action)
     }
-    */
-    
 }
+
+
+
