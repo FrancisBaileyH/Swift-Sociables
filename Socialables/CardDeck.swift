@@ -83,7 +83,7 @@ class CardDeck
     }
     
     
-    func returnToTop() ->Card?
+    func returnToTop() -> Card?
     {
         if self.deckPtr < 0 {
             return nil

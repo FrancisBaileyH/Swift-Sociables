@@ -2,13 +2,32 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h9d-tT-NdA">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Settings-->
+        <scene sceneID="1tc-8l-2X1">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" title="Settings" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Kkq-b3-CBr" customClass="SettingsViewController" customModule="Sociables" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K1L-Vf-ji9"/>
+                        <viewControllerLayoutGuide type="bottom" id="VOM-iY-HSX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VFU-RZ-bE6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bIg-PU-8iJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1363" y="1464"/>
+        </scene>
         <!--GameViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="GameViewController" customClass="GameViewController" customModule="Socialables" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="GameViewController" customClass="GameViewController" customModule="Sociables" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -77,6 +96,7 @@
                         <outlet property="cardRule" destination="kue-Tj-9k3" id="3p6-JQ-Qib"/>
                         <outlet property="cardTitle" destination="Xbd-st-SpZ" id="G9m-LZ-6Ao"/>
                         <segue destination="brQ-tx-Can" kind="show" identifier="BackToMain" id="jat-Fb-uic"/>
+                        <segue destination="Kkq-b3-CBr" kind="show" identifier="SettingsSegue" id="jFa-au-VTY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -86,12 +106,13 @@
         <!--Rule Collection View Controller-->
         <scene sceneID="rxn-nM-9Gz">
             <objects>
-                <viewController storyboardIdentifier="RuleCollectionViewController" title="Rule Editor" useStoryboardIdentifierAsRestorationIdentifier="YES" id="brQ-tx-Can" userLabel="Rule Collection View Controller" customClass="RuleCollectionViewController" customModule="Socialables" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RuleCollectionViewController" title="Rules" useStoryboardIdentifierAsRestorationIdentifier="YES" id="brQ-tx-Can" userLabel="Rule Collection View Controller" customClass="RuleCollectionViewController" customModule="Sociables" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fzh-29-zUU"/>
                         <viewControllerLayoutGuide type="bottom" id="Ngj-k7-rOC"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YWF-XN-AvJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vSY-en-nH9">
@@ -115,7 +136,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RuleViewCell" id="p1f-ae-k8I" customClass="RuleCollectionViewCell" customModule="Socialables" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RuleViewCell" id="p1f-ae-k8I" customClass="RuleCollectionViewCell" customModule="Sociables" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -152,7 +173,6 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" red="0.98823529409999999" green="0.37254901959999998" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailingMargin" secondItem="DmX-85-dno" secondAttribute="trailing" constant="8" id="2ua-VY-7Ic"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="cae-2l-3zz" secondAttribute="trailing" constant="8" id="5Uf-sU-vBj"/>
@@ -186,15 +206,15 @@
                                                 <exclude reference="f8F-y5-dgq"/>
                                             </mask>
                                             <mask key="constraints">
-                                                <exclude reference="TP6-9p-q6l"/>
-                                                <exclude reference="ksD-Mi-1Cb"/>
-                                                <exclude reference="qWu-X5-aYx"/>
                                                 <exclude reference="2ua-VY-7Ic"/>
                                                 <exclude reference="A6X-ji-DGn"/>
                                                 <exclude reference="Phk-ad-tkB"/>
                                                 <exclude reference="5Uf-sU-vBj"/>
                                                 <exclude reference="E83-nj-oVF"/>
                                                 <exclude reference="wJl-tc-5tm"/>
+                                                <exclude reference="TP6-9p-q6l"/>
+                                                <exclude reference="ksD-Mi-1Cb"/>
+                                                <exclude reference="qWu-X5-aYx"/>
                                                 <exclude reference="Dh6-Fv-YYC"/>
                                                 <exclude reference="JMd-yd-FRN"/>
                                                 <exclude reference="OXm-uR-ctp"/>
@@ -211,15 +231,15 @@
                                                 <include reference="f8F-y5-dgq"/>
                                             </mask>
                                             <mask key="constraints">
-                                                <include reference="TP6-9p-q6l"/>
-                                                <include reference="ksD-Mi-1Cb"/>
-                                                <include reference="qWu-X5-aYx"/>
                                                 <include reference="2ua-VY-7Ic"/>
                                                 <include reference="A6X-ji-DGn"/>
                                                 <include reference="Phk-ad-tkB"/>
                                                 <include reference="5Uf-sU-vBj"/>
                                                 <include reference="E83-nj-oVF"/>
                                                 <include reference="wJl-tc-5tm"/>
+                                                <include reference="TP6-9p-q6l"/>
+                                                <include reference="ksD-Mi-1Cb"/>
+                                                <include reference="qWu-X5-aYx"/>
                                                 <include reference="Dh6-Fv-YYC"/>
                                                 <exclude reference="JMd-yd-FRN"/>
                                                 <exclude reference="OXm-uR-ctp"/>
@@ -243,12 +263,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="HzU-MZ-jEy" firstAttribute="leading" secondItem="YWF-XN-AvJ" secondAttribute="leadingMargin" id="57e-FT-WKI"/>
+                            <constraint firstItem="HzU-MZ-jEy" firstAttribute="leading" secondItem="YWF-XN-AvJ" secondAttribute="leadingMargin" id="57e-FT-WKI">
+                                <variation key="widthClass=compact" constant="-16"/>
+                            </constraint>
                             <constraint firstAttribute="bottomMargin" secondItem="HzU-MZ-jEy" secondAttribute="bottom" id="Eo9-CM-u2D"/>
                             <constraint firstItem="HzU-MZ-jEy" firstAttribute="top" secondItem="YWF-XN-AvJ" secondAttribute="topMargin" constant="60" id="e7Y-6N-OVD">
                                 <variation key="widthClass=compact" constant="0.0"/>
                             </constraint>
-                            <constraint firstAttribute="trailingMargin" secondItem="HzU-MZ-jEy" secondAttribute="trailing" id="v6n-WA-XQe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HzU-MZ-jEy" secondAttribute="trailing" id="v6n-WA-XQe">
+                                <variation key="widthClass=compact" constant="-16"/>
+                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -285,15 +309,16 @@
             </objects>
             <point key="canvasLocation" x="2251.5" y="679"/>
         </scene>
-        <!--Rule Editor View Controller-->
+        <!--Edit Rule-->
         <scene sceneID="MZY-yM-qGD">
             <objects>
-                <viewController storyboardIdentifier="RuleEditorViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="v5J-9d-PNM" customClass="RuleEditorViewController" customModule="Socialables" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RuleEditorViewController" title="Edit Rule" useStoryboardIdentifierAsRestorationIdentifier="YES" id="v5J-9d-PNM" customClass="RuleEditorViewController" customModule="Sociables" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tIp-cy-XGI"/>
                         <viewControllerLayoutGuide type="bottom" id="vIm-aB-JZO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Mkm-EA-wmF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Text Here" translatesAutoresizingMaskIntoConstraints="NO" id="dFO-om-jSA">
@@ -331,12 +356,18 @@
                                 <state key="normal" title="Save">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveButtonPressed" destination="v5J-9d-PNM" eventType="touchUpInside" id="sQ1-w7-WIg"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4TJ-wh-BpH">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Reset to Default Values">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="resetButtonPressed" destination="v5J-9d-PNM" eventType="touchUpInside" id="8u0-HO-3Bd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -366,19 +397,19 @@
                                 <exclude reference="4TJ-wh-BpH"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Hrt-yC-VfT"/>
-                                <exclude reference="bEF-pj-wVl"/>
-                                <exclude reference="uch-2Y-J0b"/>
                                 <exclude reference="F5x-dQ-JR0"/>
                                 <exclude reference="hG1-32-hZW"/>
                                 <exclude reference="x2V-6N-Wta"/>
+                                <exclude reference="Hrt-yC-VfT"/>
+                                <exclude reference="bEF-pj-wVl"/>
+                                <exclude reference="uch-2Y-J0b"/>
+                                <exclude reference="1Bz-cb-AIs"/>
+                                <exclude reference="hvZ-wa-08y"/>
+                                <exclude reference="174-YD-yoP"/>
+                                <exclude reference="dVA-pP-IAy"/>
                                 <exclude reference="3Te-0h-c6p"/>
                                 <exclude reference="Qng-PJ-JgB"/>
                                 <exclude reference="ngF-qJ-RwG"/>
-                                <exclude reference="174-YD-yoP"/>
-                                <exclude reference="dVA-pP-IAy"/>
-                                <exclude reference="1Bz-cb-AIs"/>
-                                <exclude reference="hvZ-wa-08y"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -390,19 +421,19 @@
                                 <include reference="4TJ-wh-BpH"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Hrt-yC-VfT"/>
-                                <include reference="bEF-pj-wVl"/>
-                                <include reference="uch-2Y-J0b"/>
                                 <include reference="F5x-dQ-JR0"/>
                                 <include reference="hG1-32-hZW"/>
                                 <include reference="x2V-6N-Wta"/>
+                                <include reference="Hrt-yC-VfT"/>
+                                <include reference="bEF-pj-wVl"/>
+                                <include reference="uch-2Y-J0b"/>
+                                <include reference="1Bz-cb-AIs"/>
+                                <include reference="hvZ-wa-08y"/>
+                                <include reference="174-YD-yoP"/>
+                                <include reference="dVA-pP-IAy"/>
                                 <include reference="3Te-0h-c6p"/>
                                 <include reference="Qng-PJ-JgB"/>
                                 <include reference="ngF-qJ-RwG"/>
-                                <include reference="174-YD-yoP"/>
-                                <include reference="dVA-pP-IAy"/>
-                                <include reference="1Bz-cb-AIs"/>
-                                <include reference="hvZ-wa-08y"/>
                             </mask>
                         </variation>
                     </view>
@@ -419,7 +450,7 @@
         <!--Nav Controller-->
         <scene sceneID="ntr-XV-EOC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h9d-tT-NdA" customClass="NavController" customModule="Socialables" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h9d-tT-NdA" customClass="NavController" customModule="Sociables" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kWc-fb-426">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

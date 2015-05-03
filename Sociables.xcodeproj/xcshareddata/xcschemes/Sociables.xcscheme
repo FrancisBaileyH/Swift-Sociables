@@ -15,23 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "04F2B6AB1AAD58A100869C24"
-               BuildableName = "Socialables.app"
-               BlueprintName = "Socialables"
-               ReferencedContainer = "container:Socialables.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "04F2B6C31AAD58A100869C24"
-               BuildableName = "SocialablesTests.xctest"
-               BlueprintName = "SocialablesTests"
-               ReferencedContainer = "container:Socialables.xcodeproj">
+               BuildableName = "Sociables.app"
+               BlueprintName = "Sociables"
+               ReferencedContainer = "container:Sociables.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -42,24 +28,14 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "04F2B6C31AAD58A100869C24"
-               BuildableName = "SocialablesTests.xctest"
-               BlueprintName = "SocialablesTests"
-               ReferencedContainer = "container:Socialables.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "04F2B6AB1AAD58A100869C24"
-            BuildableName = "Socialables.app"
-            BlueprintName = "Socialables"
-            ReferencedContainer = "container:Socialables.xcodeproj">
+            BuildableName = "Sociables.app"
+            BlueprintName = "Sociables"
+            ReferencedContainer = "container:Sociables.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "04F2B6AB1AAD58A100869C24"
-            BuildableName = "Socialables.app"
-            BlueprintName = "Socialables"
-            ReferencedContainer = "container:Socialables.xcodeproj">
+            BuildableName = "Sociables.app"
+            BlueprintName = "Sociables"
+            ReferencedContainer = "container:Sociables.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "04F2B6AB1AAD58A100869C24"
-            BuildableName = "Socialables.app"
-            BlueprintName = "Socialables"
-            ReferencedContainer = "container:Socialables.xcodeproj">
+            BuildableName = "Sociables.app"
+            BlueprintName = "Sociables"
+            ReferencedContainer = "container:Sociables.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

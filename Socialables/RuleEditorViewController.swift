@@ -19,28 +19,39 @@ class RuleEditorViewController: UIViewController {
    
     var ruleText: String? = nil
     var ruleTitle: String? = nil
-    var cardType: String? = nil
+    var cardRank: String? = nil
     
     
     let rm = RuleManager.sharedInstance
     
     
-    
     override func viewDidLoad() {
         ruleTextField.text = ruleText
         ruleTitleField.text = ruleTitle
-        cardTypeLabel.text = cardType
+        cardTypeLabel.text = cardRank
         
         ruleTextField.layer.borderWidth = 1
     }
     
     
     @IBAction func saveButtonPressed() {
-        // handle validation
+        let rule = CardAndRule(rule: RuleType(title: ruleTitleField.text, explanation: ruleTextField.text), rank: cardTypeLabel.text!)
+        
+        if let err = rm.saveRule(rule) {
+            // set error
+        } else {
+           self.navigationController?.popViewControllerAnimated(true)
+        }
+        
+        
     }
     
     @IBAction func resetButtonPressed() {
-        //reset this value yo!
+        
+        if let err = rm.removePersistentRule(cardTypeLabel.text!) {
+            // set error label
+            println(err.localizedDescription)
+        }
     }
     
     

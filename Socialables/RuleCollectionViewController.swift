@@ -18,24 +18,40 @@ class RuleCollectionViewController: UIViewController, CellActionDelegate {
     var rules = [CardAndRule]()
     
     
+    /*
+     * Fetch all rules on load
+    */
     override func viewDidLoad() {
-        rules = rm.getAllRules()
+
     }
     
+    
+    override func viewDidAppear(animated: Bool) {
+        rules = rm.getAllRules()
+        ruleCollection.reloadData()
+    }
+    
+    
 
+    /*
+     * Handle button press actions from within the 
+     * RuleCollectionViewCell
+    */
     func buttonPressed(cell: RuleCollectionViewCell, action: String) {
-        println(cell.ruleText.text)
         
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
-        
-        let ruleEditor = mainStoryboard.instantiateViewControllerWithIdentifier("RuleEditorViewController") as! RuleEditorViewController
-        
-        println(ruleEditor)
-        ruleEditor.ruleTitle = cell.ruleTitle.text
-        ruleEditor.ruleText = cell.ruleText.text
-        ruleEditor.cardType = cell.cardType.text
+        if action == "edit" {
 
-        self.navigationController?.pushViewController(ruleEditor, animated: true)
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
+        
+            let ruleEditor = mainStoryboard.instantiateViewControllerWithIdentifier("RuleEditorViewController") as! RuleEditorViewController
+        
+        
+            ruleEditor.ruleTitle = cell.ruleTitle.text
+            ruleEditor.ruleText = cell.ruleText.text
+            ruleEditor.cardRank = cell.cardType.text
+
+            self.navigationController?.pushViewController(ruleEditor, animated: true)
+        }
     }
     
     
@@ -54,18 +70,14 @@ extension RuleCollectionViewController: UICollectionViewDataSource, UICollection
         
         let rule = rules[indexPath.row]
         
-        cell.cardType.text = rule.cardType
-        cell.ruleTitle.text = rule.rule.name
+        cell.cardType.text = rule.rank
+        cell.ruleTitle.text = rule.rule.title
         cell.ruleText.text = rule.rule.explanation
         
         cell.delegate = self
+
         
         return cell
-    }
-    
-    
-    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        
     }
     
     

@@ -92,21 +92,13 @@ class MenuTableViewController: UITableViewController {
         switch (indexPath.row) {
         case 0:
             sideMenuController()?.sideMenu?.delegate?.nonSegueEventDidFire?("New Game")
-            //destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController") as? UIViewController
             break
         case 1:
-            
-            //sideMenuController()?.sideMenu?.
             destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("RuleCollectionViewController") as? UIViewController
-
-         
             
-            break
-        case 2:
-            //destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController3") as? UIViewController
             break
         default:
-           // destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController4") as? UIViewController
+           destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("SettingsViewController") as? UIViewController
             break
         }
         

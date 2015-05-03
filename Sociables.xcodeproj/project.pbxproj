@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		04A8BA341ABCB3FC00BD58AF /* RuleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A8BA331ABCB3FC00BD58AF /* RuleManager.swift */; };
 		04F2B6B21AAD58A100869C24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B6B11AAD58A100869C24 /* AppDelegate.swift */; };
-		04F2B6B51AAD58A100869C24 /* Socialables.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B6B31AAD58A100869C24 /* Socialables.xcdatamodeld */; };
+		04F2B6B51AAD58A100869C24 /* Sociables.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B6B31AAD58A100869C24 /* Sociables.xcdatamodeld */; };
 		04F2B6B71AAD58A100869C24 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B6B61AAD58A100869C24 /* GameViewController.swift */; };
 		04F2B6BA1AAD58A100869C24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F2B6B81AAD58A100869C24 /* Main.storyboard */; };
 		04F2B6BC1AAD58A100869C24 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F2B6BB1AAD58A100869C24 /* Images.xcassets */; };
 		04F2B6BF1AAD58A100869C24 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F2B6BD1AAD58A100869C24 /* LaunchScreen.xib */; };
-		04F2B6CB1AAD58A100869C24 /* SocialablesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B6CA1AAD58A100869C24 /* SocialablesTests.swift */; };
+		04F2B6CB1AAD58A100869C24 /* SociablesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B6CA1AAD58A100869C24 /* SociablesTests.swift */; };
 		04F2B6D51AAD617200869C24 /* CardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B6D41AAD617200869C24 /* CardDeck.swift */; };
 		B347B35A1AF34860007C882D /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B347B3581AF34860007C882D /* ENSideMenu.swift */; };
 		B347B35B1AF34860007C882D /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B347B3591AF34860007C882D /* ENSideMenuNavigationController.swift */; };
@@ -23,6 +23,8 @@
 		B37F291D1AF60509000A933D /* RuleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37F291C1AF60509000A933D /* RuleCollectionViewController.swift */; };
 		B37F291F1AF6054F000A933D /* RuleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37F291E1AF6054F000A933D /* RuleCollectionViewCell.swift */; };
 		B37F29211AF611DD000A933D /* RuleEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37F29201AF611DD000A933D /* RuleEditorViewController.swift */; };
+		B37F29241AF62298000A933D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37F29231AF62298000A933D /* SettingsViewController.swift */; };
+		B37F292E1AF6C6E9000A933D /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37F292D1AF6C6E9000A933D /* Rule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,17 +39,17 @@
 
 /* Begin PBXFileReference section */
 		04A8BA331ABCB3FC00BD58AF /* RuleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleManager.swift; sourceTree = "<group>"; };
-		04F2B6AC1AAD58A100869C24 /* Socialables.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Socialables.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04F2B6AC1AAD58A100869C24 /* Sociables.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sociables.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F2B6B01AAD58A100869C24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04F2B6B11AAD58A100869C24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		04F2B6B41AAD58A100869C24 /* Socialables.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Socialables.xcdatamodel; sourceTree = "<group>"; };
+		04F2B6B41AAD58A100869C24 /* Sociables.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Sociables.xcdatamodel; sourceTree = "<group>"; };
 		04F2B6B61AAD58A100869C24 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		04F2B6B91AAD58A100869C24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04F2B6BB1AAD58A100869C24 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		04F2B6BE1AAD58A100869C24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		04F2B6C41AAD58A100869C24 /* SocialablesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SocialablesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04F2B6C41AAD58A100869C24 /* SociablesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SociablesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F2B6C91AAD58A100869C24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04F2B6CA1AAD58A100869C24 /* SocialablesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialablesTests.swift; sourceTree = "<group>"; };
+		04F2B6CA1AAD58A100869C24 /* SociablesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SociablesTests.swift; sourceTree = "<group>"; };
 		04F2B6D41AAD617200869C24 /* CardDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CardDeck.swift; sourceTree = "<group>"; };
 		B347B3581AF34860007C882D /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ENSideMenu.swift; path = Vendor/ENSwiftSideMenu/ENSideMenu.swift; sourceTree = "<group>"; };
 		B347B3591AF34860007C882D /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ENSideMenuNavigationController.swift; path = Vendor/ENSwiftSideMenu/ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,8 @@
 		B37F291C1AF60509000A933D /* RuleCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleCollectionViewController.swift; sourceTree = "<group>"; };
 		B37F291E1AF6054F000A933D /* RuleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleCollectionViewCell.swift; sourceTree = "<group>"; };
 		B37F29201AF611DD000A933D /* RuleEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleEditorViewController.swift; sourceTree = "<group>"; };
+		B37F29231AF62298000A933D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B37F292D1AF6C6E9000A933D /* Rule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +85,7 @@
 			children = (
 				B347B3551AF34833007C882D /* Vendor */,
 				04F2B6AE1AAD58A100869C24 /* Socialables */,
-				04F2B6C71AAD58A100869C24 /* SocialablesTests */,
+				04F2B6C71AAD58A100869C24 /* SociablesTests */,
 				04F2B6AD1AAD58A100869C24 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,8 +93,8 @@
 		04F2B6AD1AAD58A100869C24 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				04F2B6AC1AAD58A100869C24 /* Socialables.app */,
-				04F2B6C41AAD58A100869C24 /* SocialablesTests.xctest */,
+				04F2B6AC1AAD58A100869C24 /* Sociables.app */,
+				04F2B6C41AAD58A100869C24 /* SociablesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,20 +102,14 @@
 		04F2B6AE1AAD58A100869C24 /* Socialables */ = {
 			isa = PBXGroup;
 			children = (
-				04F2B6B11AAD58A100869C24 /* AppDelegate.swift */,
-				04F2B6B61AAD58A100869C24 /* GameViewController.swift */,
-				04F2B6B81AAD58A100869C24 /* Main.storyboard */,
-				B37F291C1AF60509000A933D /* RuleCollectionViewController.swift */,
-				B37F29201AF611DD000A933D /* RuleEditorViewController.swift */,
-				B37F291E1AF6054F000A933D /* RuleCollectionViewCell.swift */,
-				04F2B6D41AAD617200869C24 /* CardDeck.swift */,
+				B37F29281AF6AE6F000A933D /* Application */,
+				B37F29221AF61FE8000A933D /* Controllers */,
 				04F2B6BB1AAD58A100869C24 /* Images.xcassets */,
 				04F2B6BD1AAD58A100869C24 /* LaunchScreen.xib */,
-				04F2B6B31AAD58A100869C24 /* Socialables.xcdatamodeld */,
-				04A8BA331ABCB3FC00BD58AF /* RuleManager.swift */,
+				04F2B6B81AAD58A100869C24 /* Main.storyboard */,
+				B37F29271AF6AE56000A933D /* Models */,
+				04F2B6B31AAD58A100869C24 /* Sociables.xcdatamodeld */,
 				04F2B6AF1AAD58A100869C24 /* Supporting Files */,
-				B347B35C1AF34963007C882D /* NavController.swift */,
-				B347B35E1AF3499C007C882D /* MenuTableViewController.swift */,
 			);
 			path = Socialables;
 			sourceTree = "<group>";
@@ -124,12 +122,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		04F2B6C71AAD58A100869C24 /* SocialablesTests */ = {
+		04F2B6C71AAD58A100869C24 /* SociablesTests */ = {
 			isa = PBXGroup;
 			children = (
-				04F2B6CA1AAD58A100869C24 /* SocialablesTests.swift */,
+				04F2B6CA1AAD58A100869C24 /* SociablesTests.swift */,
 				04F2B6C81AAD58A100869C24 /* Supporting Files */,
 			);
+			name = SociablesTests;
 			path = SocialablesTests;
 			sourceTree = "<group>";
 		};
@@ -150,12 +149,60 @@
 			name = Vendor;
 			sourceTree = "<group>";
 		};
+		B37F29221AF61FE8000A933D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				04F2B6B61AAD58A100869C24 /* GameViewController.swift */,
+				B37F29231AF62298000A933D /* SettingsViewController.swift */,
+				B37F292A1AF6AE86000A933D /* RuleManagement */,
+				B37F29291AF6AE7D000A933D /* Navigation */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B37F29271AF6AE56000A933D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B37F292D1AF6C6E9000A933D /* Rule.swift */,
+				04A8BA331ABCB3FC00BD58AF /* RuleManager.swift */,
+				04F2B6D41AAD617200869C24 /* CardDeck.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		B37F29281AF6AE6F000A933D /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				04F2B6B11AAD58A100869C24 /* AppDelegate.swift */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		B37F29291AF6AE7D000A933D /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				B347B35C1AF34963007C882D /* NavController.swift */,
+				B347B35E1AF3499C007C882D /* MenuTableViewController.swift */,
+			);
+			name = Navigation;
+			sourceTree = "<group>";
+		};
+		B37F292A1AF6AE86000A933D /* RuleManagement */ = {
+			isa = PBXGroup;
+			children = (
+				B37F291C1AF60509000A933D /* RuleCollectionViewController.swift */,
+				B37F29201AF611DD000A933D /* RuleEditorViewController.swift */,
+				B37F291E1AF6054F000A933D /* RuleCollectionViewCell.swift */,
+			);
+			name = RuleManagement;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		04F2B6AB1AAD58A100869C24 /* Socialables */ = {
+		04F2B6AB1AAD58A100869C24 /* Sociables */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 04F2B6CE1AAD58A100869C24 /* Build configuration list for PBXNativeTarget "Socialables" */;
+			buildConfigurationList = 04F2B6CE1AAD58A100869C24 /* Build configuration list for PBXNativeTarget "Sociables" */;
 			buildPhases = (
 				04F2B6A81AAD58A100869C24 /* Sources */,
 				04F2B6A91AAD58A100869C24 /* Frameworks */,
@@ -165,14 +212,14 @@
 			);
 			dependencies = (
 			);
-			name = Socialables;
+			name = Sociables;
 			productName = Socialables;
-			productReference = 04F2B6AC1AAD58A100869C24 /* Socialables.app */;
+			productReference = 04F2B6AC1AAD58A100869C24 /* Sociables.app */;
 			productType = "com.apple.product-type.application";
 		};
-		04F2B6C31AAD58A100869C24 /* SocialablesTests */ = {
+		04F2B6C31AAD58A100869C24 /* SociablesTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 04F2B6D11AAD58A100869C24 /* Build configuration list for PBXNativeTarget "SocialablesTests" */;
+			buildConfigurationList = 04F2B6D11AAD58A100869C24 /* Build configuration list for PBXNativeTarget "SociablesTests" */;
 			buildPhases = (
 				04F2B6C01AAD58A100869C24 /* Sources */,
 				04F2B6C11AAD58A100869C24 /* Frameworks */,
@@ -183,9 +230,9 @@
 			dependencies = (
 				04F2B6C61AAD58A100869C24 /* PBXTargetDependency */,
 			);
-			name = SocialablesTests;
+			name = SociablesTests;
 			productName = SocialablesTests;
-			productReference = 04F2B6C41AAD58A100869C24 /* SocialablesTests.xctest */;
+			productReference = 04F2B6C41AAD58A100869C24 /* SociablesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -207,7 +254,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 04F2B6A71AAD58A000869C24 /* Build configuration list for PBXProject "Socialables" */;
+			buildConfigurationList = 04F2B6A71AAD58A000869C24 /* Build configuration list for PBXProject "Sociables" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -220,8 +267,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				04F2B6AB1AAD58A100869C24 /* Socialables */,
-				04F2B6C31AAD58A100869C24 /* SocialablesTests */,
+				04F2B6AB1AAD58A100869C24 /* Sociables */,
+				04F2B6C31AAD58A100869C24 /* SociablesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -255,14 +302,16 @@
 				B347B35A1AF34860007C882D /* ENSideMenu.swift in Sources */,
 				04F2B6B71AAD58A100869C24 /* GameViewController.swift in Sources */,
 				B37F29211AF611DD000A933D /* RuleEditorViewController.swift in Sources */,
-				04F2B6B51AAD58A100869C24 /* Socialables.xcdatamodeld in Sources */,
+				04F2B6B51AAD58A100869C24 /* Sociables.xcdatamodeld in Sources */,
 				B347B35B1AF34860007C882D /* ENSideMenuNavigationController.swift in Sources */,
 				04A8BA341ABCB3FC00BD58AF /* RuleManager.swift in Sources */,
 				B347B35F1AF3499C007C882D /* MenuTableViewController.swift in Sources */,
 				04F2B6D51AAD617200869C24 /* CardDeck.swift in Sources */,
 				04F2B6B21AAD58A100869C24 /* AppDelegate.swift in Sources */,
+				B37F29241AF62298000A933D /* SettingsViewController.swift in Sources */,
 				B37F291D1AF60509000A933D /* RuleCollectionViewController.swift in Sources */,
 				B347B35D1AF34963007C882D /* NavController.swift in Sources */,
+				B37F292E1AF6C6E9000A933D /* Rule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,7 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04F2B6CB1AAD58A100869C24 /* SocialablesTests.swift in Sources */,
+				04F2B6CB1AAD58A100869C24 /* SociablesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,7 +328,7 @@
 /* Begin PBXTargetDependency section */
 		04F2B6C61AAD58A100869C24 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 04F2B6AB1AAD58A100869C24 /* Socialables */;
+			target = 04F2B6AB1AAD58A100869C24 /* Sociables */;
 			targetProxy = 04F2B6C51AAD58A100869C24 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -391,7 +440,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Socialables/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Sociables;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -404,7 +453,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Socialables/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Sociables;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -423,7 +472,7 @@
 				);
 				INFOPLIST_FILE = SocialablesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SociablesTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Socialables.app/Socialables";
 			};
 			name = Debug;
@@ -438,7 +487,7 @@
 				);
 				INFOPLIST_FILE = SocialablesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SociablesTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Socialables.app/Socialables";
 			};
 			name = Release;
@@ -446,7 +495,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		04F2B6A71AAD58A000869C24 /* Build configuration list for PBXProject "Socialables" */ = {
+		04F2B6A71AAD58A000869C24 /* Build configuration list for PBXProject "Sociables" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04F2B6CC1AAD58A100869C24 /* Debug */,
@@ -455,7 +504,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		04F2B6CE1AAD58A100869C24 /* Build configuration list for PBXNativeTarget "Socialables" */ = {
+		04F2B6CE1AAD58A100869C24 /* Build configuration list for PBXNativeTarget "Sociables" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04F2B6CF1AAD58A100869C24 /* Debug */,
@@ -464,7 +513,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		04F2B6D11AAD58A100869C24 /* Build configuration list for PBXNativeTarget "SocialablesTests" */ = {
+		04F2B6D11AAD58A100869C24 /* Build configuration list for PBXNativeTarget "SociablesTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04F2B6D21AAD58A100869C24 /* Debug */,
@@ -476,13 +525,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		04F2B6B31AAD58A100869C24 /* Socialables.xcdatamodeld */ = {
+		04F2B6B31AAD58A100869C24 /* Sociables.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				04F2B6B41AAD58A100869C24 /* Socialables.xcdatamodel */,
+				04F2B6B41AAD58A100869C24 /* Sociables.xcdatamodel */,
 			);
-			currentVersion = 04F2B6B41AAD58A100869C24 /* Socialables.xcdatamodel */;
-			path = Socialables.xcdatamodeld;
+			currentVersion = 04F2B6B41AAD58A100869C24 /* Sociables.xcdatamodel */;
+			path = Sociables.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

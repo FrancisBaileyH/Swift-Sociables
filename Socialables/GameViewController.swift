@@ -84,8 +84,9 @@ class GameViewController: UIViewController, NavControllerDelegate {
 
             self.cardImage.image = UIImage( named: imgName )
             let rule = rules.getRule(rank)
-            self.cardTitle.text = rule.name
-            self.cardRule.text = rule.explanation
+            
+            self.cardTitle.text = rule.rule.title
+            self.cardRule.text = rule.rule.explanation
             
             return
         }
