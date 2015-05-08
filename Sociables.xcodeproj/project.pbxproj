@@ -16,6 +16,8 @@
 		04F2B6BF1AAD58A100869C24 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F2B6BD1AAD58A100869C24 /* LaunchScreen.xib */; };
 		04F2B6CB1AAD58A100869C24 /* SociablesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B6CA1AAD58A100869C24 /* SociablesTests.swift */; };
 		04F2B6D51AAD617200869C24 /* CardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B6D41AAD617200869C24 /* CardDeck.swift */; };
+		B30F6AC31AF9ABB900105F0C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30F6AC21AF9ABB900105F0C /* Settings.swift */; };
+		B30F6AC51AF9DDA500105F0C /* CardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2B6D41AAD617200869C24 /* CardDeck.swift */; };
 		B347B35A1AF34860007C882D /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B347B3581AF34860007C882D /* ENSideMenu.swift */; };
 		B347B35B1AF34860007C882D /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B347B3591AF34860007C882D /* ENSideMenuNavigationController.swift */; };
 		B347B35D1AF34963007C882D /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B347B35C1AF34963007C882D /* NavController.swift */; };
@@ -51,6 +53,7 @@
 		04F2B6C91AAD58A100869C24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04F2B6CA1AAD58A100869C24 /* SociablesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SociablesTests.swift; sourceTree = "<group>"; };
 		04F2B6D41AAD617200869C24 /* CardDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CardDeck.swift; sourceTree = "<group>"; };
+		B30F6AC21AF9ABB900105F0C /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		B347B3581AF34860007C882D /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ENSideMenu.swift; path = Vendor/ENSwiftSideMenu/ENSideMenu.swift; sourceTree = "<group>"; };
 		B347B3591AF34860007C882D /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ENSideMenuNavigationController.swift; path = Vendor/ENSwiftSideMenu/ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
 		B347B35C1AF34963007C882D /* NavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
@@ -84,7 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				B347B3551AF34833007C882D /* Vendor */,
-				04F2B6AE1AAD58A100869C24 /* Socialables */,
+				04F2B6AE1AAD58A100869C24 /* Sociables */,
 				04F2B6C71AAD58A100869C24 /* SociablesTests */,
 				04F2B6AD1AAD58A100869C24 /* Products */,
 			);
@@ -99,7 +102,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		04F2B6AE1AAD58A100869C24 /* Socialables */ = {
+		04F2B6AE1AAD58A100869C24 /* Sociables */ = {
 			isa = PBXGroup;
 			children = (
 				B37F29281AF6AE6F000A933D /* Application */,
@@ -111,6 +114,7 @@
 				04F2B6B31AAD58A100869C24 /* Sociables.xcdatamodeld */,
 				04F2B6AF1AAD58A100869C24 /* Supporting Files */,
 			);
+			name = Sociables;
 			path = Socialables;
 			sourceTree = "<group>";
 		};
@@ -163,6 +167,7 @@
 		B37F29271AF6AE56000A933D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B30F6AC21AF9ABB900105F0C /* Settings.swift */,
 				B37F292D1AF6C6E9000A933D /* Rule.swift */,
 				04A8BA331ABCB3FC00BD58AF /* RuleManager.swift */,
 				04F2B6D41AAD617200869C24 /* CardDeck.swift */,
@@ -250,7 +255,6 @@
 					};
 					04F2B6C31AAD58A100869C24 = {
 						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = 04F2B6AB1AAD58A100869C24;
 					};
 				};
 			};
@@ -307,6 +311,7 @@
 				04A8BA341ABCB3FC00BD58AF /* RuleManager.swift in Sources */,
 				B347B35F1AF3499C007C882D /* MenuTableViewController.swift in Sources */,
 				04F2B6D51AAD617200869C24 /* CardDeck.swift in Sources */,
+				B30F6AC31AF9ABB900105F0C /* Settings.swift in Sources */,
 				04F2B6B21AAD58A100869C24 /* AppDelegate.swift in Sources */,
 				B37F29241AF62298000A933D /* SettingsViewController.swift in Sources */,
 				B37F291D1AF60509000A933D /* RuleCollectionViewController.swift in Sources */,
@@ -319,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B30F6AC51AF9DDA500105F0C /* CardDeck.swift in Sources */,
 				04F2B6CB1AAD58A100869C24 /* SociablesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,7 +467,6 @@
 		04F2B6D21AAD58A100869C24 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -473,14 +478,12 @@
 				INFOPLIST_FILE = SocialablesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = SociablesTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Socialables.app/Socialables";
 			};
 			name = Debug;
 		};
 		04F2B6D31AAD58A100869C24 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -488,7 +491,6 @@
 				INFOPLIST_FILE = SocialablesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = SociablesTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Socialables.app/Socialables";
 			};
 			name = Release;
 		};

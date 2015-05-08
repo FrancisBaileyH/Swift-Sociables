@@ -17,8 +17,136 @@
                     <view key="view" contentMode="scaleToFill" id="VFU-RZ-bE6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="52" minValue="52" maxValue="104" translatesAutoresizingMaskIntoConstraints="NO" id="8Ae-6F-9Iu">
+                                <rect key="frame" x="0.0" y="-15" width="118" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="RJ6-xm-oZe"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="RJ6-xm-oZe"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="RJ6-xm-oZe"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="numberSliderDidChange:" destination="Kkq-b3-CBr" eventType="valueChanged" id="Cq5-Ek-MOT"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guys Drink More:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kG-1y-3em">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Cards" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7y-Q1-0oD">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="132" height="21"/>
+                                </variation>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="drI-wN-8uf" userLabel="Guys Drink More Switch">
+                                <rect key="frame" x="-25" y="-15" width="51" height="31"/>
+                                <connections>
+                                    <action selector="guysDrinkMoreSwitchChanged:" destination="Kkq-b3-CBr" eventType="valueChanged" id="5Yz-Mb-aS7"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Girls Drink More:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNK-gy-pB5">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="OoN-93-x6R"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="OoN-93-x6R"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="OoN-93-x6R"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3Az-aB-pcs" userLabel="Girls Drink More Switch">
+                                <rect key="frame" x="-25" y="-15" width="51" height="31"/>
+                                <connections>
+                                    <action selector="girlsDrinkMoreSwitchChanged:" destination="Kkq-b3-CBr" eventType="valueChanged" id="jdQ-1G-fgs"/>
+                                </connections>
+                            </switch>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MNK-gy-pB5" firstAttribute="leading" secondItem="VFU-RZ-bE6" secondAttribute="leadingMargin" id="1VS-rn-upz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="drI-wN-8uf" secondAttribute="trailing" constant="55" id="41g-0g-Iec"/>
+                            <constraint firstAttribute="centerX" secondItem="8Ae-6F-9Iu" secondAttribute="centerX" id="FXA-jO-Lal"/>
+                            <constraint firstItem="MNK-gy-pB5" firstAttribute="top" secondItem="VFU-RZ-bE6" secondAttribute="topMargin" constant="284" id="JCy-cD-Dba"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3Az-aB-pcs" secondAttribute="trailing" constant="55" id="RoA-0A-oMJ"/>
+                            <constraint firstItem="3Az-aB-pcs" firstAttribute="top" secondItem="VFU-RZ-bE6" secondAttribute="topMargin" constant="279" id="Wkl-z4-nYK"/>
+                            <constraint firstItem="drI-wN-8uf" firstAttribute="top" secondItem="VFU-RZ-bE6" secondAttribute="topMargin" constant="225" id="gGI-FC-gcO"/>
+                            <constraint firstItem="1kG-1y-3em" firstAttribute="leading" secondItem="VFU-RZ-bE6" secondAttribute="leadingMargin" id="gZu-rt-y7S"/>
+                            <constraint firstItem="8Ae-6F-9Iu" firstAttribute="top" secondItem="VFU-RZ-bE6" secondAttribute="top" constant="170" id="vHG-4j-DL0"/>
+                            <constraint firstItem="1kG-1y-3em" firstAttribute="top" secondItem="VFU-RZ-bE6" secondAttribute="topMargin" constant="230" id="w1v-Ul-fsG"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="8Ae-6F-9Iu"/>
+                                <exclude reference="1kG-1y-3em"/>
+                                <exclude reference="v7y-Q1-0oD"/>
+                                <exclude reference="drI-wN-8uf"/>
+                                <exclude reference="MNK-gy-pB5"/>
+                                <exclude reference="3Az-aB-pcs"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="FXA-jO-Lal"/>
+                                <exclude reference="vHG-4j-DL0"/>
+                                <exclude reference="gZu-rt-y7S"/>
+                                <exclude reference="w1v-Ul-fsG"/>
+                                <exclude reference="1VS-rn-upz"/>
+                                <exclude reference="JCy-cD-Dba"/>
+                                <exclude reference="41g-0g-Iec"/>
+                                <exclude reference="gGI-FC-gcO"/>
+                                <exclude reference="RoA-0A-oMJ"/>
+                                <exclude reference="Wkl-z4-nYK"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="8Ae-6F-9Iu"/>
+                                <include reference="1kG-1y-3em"/>
+                                <include reference="v7y-Q1-0oD"/>
+                                <include reference="drI-wN-8uf"/>
+                                <include reference="MNK-gy-pB5"/>
+                                <include reference="3Az-aB-pcs"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="FXA-jO-Lal"/>
+                                <include reference="vHG-4j-DL0"/>
+                                <include reference="gZu-rt-y7S"/>
+                                <include reference="w1v-Ul-fsG"/>
+                                <include reference="1VS-rn-upz"/>
+                                <include reference="JCy-cD-Dba"/>
+                                <include reference="41g-0g-Iec"/>
+                                <include reference="gGI-FC-gcO"/>
+                                <include reference="RoA-0A-oMJ"/>
+                                <include reference="Wkl-z4-nYK"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="deckSizeSlider" destination="8Ae-6F-9Iu" id="nRk-v0-LAt"/>
+                        <outlet property="girlsDrinkMoreSwitch" destination="3Az-aB-pcs" id="OmQ-pW-l7d"/>
+                        <outlet property="guysDrinkMoreSwitch" destination="drI-wN-8uf" id="Oa6-Vu-kZg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bIg-PU-8iJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

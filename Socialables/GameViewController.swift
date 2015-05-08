@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Socialables
 //
-//  Created by CIS-Mac-16 on 2015-03-08.
+//  Created by Francis Bailey on 2015-03-08.
 //  Copyright (c) 2015 Okanagan College. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  CardDeck.swift
 //  Socialables
 //
-//  Created by CIS-Mac-16 on 2015-03-08.
+//  Created by Francis Bailey on 2015-03-08.
 //  Copyright (c) 2015 Okanagan College. All rights reserved.
 //
 
@@ -15,15 +15,25 @@ struct Card {
 }
 
 
+enum DeckBias {
+    case girlsDrinkMore
+    case guysDrinkMore
+    case noBias
+}
+
+
 class CardDeck
 {
-    let size : UInt32 = 52
+    private let size : UInt32 = 52
     
+    
+    var bias: DeckBias
     var deckPtr : Int
     var deck = [Card]()
     var endOfDeck : Bool
     let suits : [String] = [ "hearts", "spades", "diamonds", "clubs" ]
     let ranks : [String] = [ "ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"]
+    
     
     
     
@@ -34,6 +44,8 @@ class CardDeck
     init()
     {
         // build deck
+        bias = DeckBias.noBias
+        
         self.deckPtr = 0
         
         for ( var i = 0; i < Int(self.size); i++ )
@@ -41,9 +53,51 @@ class CardDeck
             self.deck.append(Card(rank: self.ranks[i % 13], suit: self.suits[i / 13])) // append card object with  rule title - rule name - card name
         }
         
+        
         // shuffle deck after initialization
         self.endOfDeck = false
         self.shuffle()
+    }
+    
+    
+    
+    private func determineBias(bias: DeckBias) {
+    
+        // size / 13
+        
+        
+        /*
+        switch bias {
+        case .girlsDrinkMore:
+            break
+        default:
+            
+        }*/
+    }
+    
+    
+    /*
+     * First build a normal deck of cards
+     * any number greater than 52, we will now just grab a random card
+     * from the available set of cards
+    */
+    private func buildDeck(deckSize: Int, bias: DeckBias) {
+        
+        for ( var i = 0; i < Int(self.size); i++ )
+        {
+            var idx = i
+            
+            if i > Int(self.size) {
+                idx = generateRandomDeckIndex()
+            }
+            
+            self.deck.append(Card(rank: self.ranks[idx % 13], suit: self.suits[idx / 13])) // append card object with  rule title - rule name - card name
+        }
+    }
+    
+    
+    func generateRandomDeckIndex() -> Int {
+        return Int(arc4random_uniform(self.size))
     }
     
     
@@ -51,7 +105,7 @@ class CardDeck
     {
         for ( var i = 0; i < Int(self.size); i++ )
         {
-            var idx = Int(arc4random_uniform(self.size))
+            let idx = generateRandomDeckIndex()
             var tmp = self.deck[i]
             self.deck[i] = self.deck[idx]
             self.deck[idx] = tmp
