@@ -18,6 +18,7 @@ struct RuleType {
 struct CardAndRule {
     var rule: RuleType
     var rank: String
+    var isDefault: Bool
 }
 
 
@@ -29,6 +30,10 @@ class RuleManager
     
     let coreData: NSManagedObjectContext
     let ruleEntityDescription: NSEntityDescription
+    
+    
+    let defaultGirlsDrinkCard = DeckBias.girlsDrinkMore.rawValue
+    let defaultGuysDrinkCard = DeckBias.guysDrinkMore.rawValue
     
     
     init() {
@@ -79,7 +84,7 @@ class RuleManager
         }
         
         coreData.save(&error)
-        println(error)
+
         return error
     }
     
@@ -124,7 +129,7 @@ class RuleManager
         request.predicate = NSPredicate(format: "(" + Rule.ruleRankKey + " = %@)", rank)
         
         var results = coreData.executeFetchRequest(request, error: nil)
-        println(results?.count)
+
         if results?.count > 0 {
             return results?[0] as? NSManagedObject
         } else {
@@ -146,9 +151,9 @@ class RuleManager
             let title       = rule.valueForKey(Rule.ruleTitleKey) as! String
             let explanation = rule.valueForKey(Rule.ruleExplanationKey) as! String
             
-            return CardAndRule(rule: RuleType(title: title, explanation: explanation), rank: rank)
+            return CardAndRule(rule: RuleType(title: title, explanation: explanation), rank: rank, isDefault: false)
         } else {
-            return CardAndRule(rule: defaultRules[rank]!, rank: rank)
+            return CardAndRule(rule: defaultRules[rank]!, rank: rank, isDefault: true)
         }
     }
     
@@ -173,11 +178,11 @@ class RuleManager
         }
         
         for rule in defaultRules {
-            
+            println(rule.0)
             if rulesTmp[rule.0] == nil {
-                rules.append(CardAndRule(rule: RuleType(title: rule.1.title, explanation: rule.1.explanation), rank: rule.0))
+                  rules.append(CardAndRule(rule: RuleType(title: rule.1.title, explanation: rule.1.explanation), rank: rule.0, isDefault: true))
             } else {
-                rules.append(CardAndRule(rule: rulesTmp[rule.0]!, rank: rule.0))
+                rules.append(CardAndRule(rule: rulesTmp[rule.0]!, rank: rule.0, isDefault: false))
             }
         }
         

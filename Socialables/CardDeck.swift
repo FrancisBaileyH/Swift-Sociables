@@ -15,26 +15,34 @@ struct Card {
 }
 
 
-enum DeckBias {
-    case girlsDrinkMore
-    case guysDrinkMore
-    case noBias
+enum DeckBias: String {
+    case girlsDrinkMore = "4"
+    case guysDrinkMore = "6"
+    case noBias = ""
 }
 
 
 class CardDeck
 {
-    private let size : UInt32 = 52
+    private let size = 52
+    private var customDeckSize: Int
+    private var bias: DeckBias
     
-    
-    var bias: DeckBias
-    var deckPtr : Int
+    private var deckPtr : Int
     var deck = [Card]()
     var endOfDeck : Bool
+    
     let suits : [String] = [ "hearts", "spades", "diamonds", "clubs" ]
     let ranks : [String] = [ "ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"]
     
-    
+    var test : Int {
+        get {
+            return self.test
+        }
+        set(value) {
+            self.test = value
+        }
+    }
     
     
     static let sharedInstance = CardDeck()
@@ -46,33 +54,13 @@ class CardDeck
         // build deck
         bias = DeckBias.noBias
         
-        self.deckPtr = 0
+        self.customDeckSize = size
         
-        for ( var i = 0; i < Int(self.size); i++ )
-        {
-            self.deck.append(Card(rank: self.ranks[i % 13], suit: self.suits[i / 13])) // append card object with  rule title - rule name - card name
-        }
+        self.deckPtr = 0
         
         
         // shuffle deck after initialization
         self.endOfDeck = false
-        self.shuffle()
-    }
-    
-    
-    
-    private func determineBias(bias: DeckBias) {
-    
-        // size / 13
-        
-        
-        /*
-        switch bias {
-        case .girlsDrinkMore:
-            break
-        default:
-            
-        }*/
     }
     
     
@@ -81,31 +69,71 @@ class CardDeck
      * any number greater than 52, we will now just grab a random card
      * from the available set of cards
     */
-    private func buildDeck(deckSize: Int, bias: DeckBias) {
+    func buildDeck() {
         
-        for ( var i = 0; i < Int(self.size); i++ )
+        self.deck.removeAll(keepCapacity: false)
+        println(self.customDeckSize)
+        
+        for ( var i = 0; i < Int(self.customDeckSize); i++ )
         {
             var idx = i
             
-            if i > Int(self.size) {
-                idx = generateRandomDeckIndex()
+            if i >= Int(self.size) {
+                idx = generateRandomDeckIndex(self.size)
             }
-            
             self.deck.append(Card(rank: self.ranks[idx % 13], suit: self.suits[idx / 13])) // append card object with  rule title - rule name - card name
         }
+        
+        if bias != DeckBias.noBias {
+            applyBias()
+        }
+        
+        shuffle()
     }
     
     
-    func generateRandomDeckIndex() -> Int {
-        return Int(arc4random_uniform(self.size))
+    /*
+     * Generate a random number between 0 and the size of the deck - 1
+    */
+    func generateRandomDeckIndex(deckSize: Int) -> Int {
+        return Int(arc4random_uniform(UInt32(deckSize)))
+    }
+    
+    
+    
+    private func applyBias() {
+        
+        let numCardsToReplace: Int = self.customDeckSize / 16
+        
+        var i = 0;
+        
+        while ( i < numCardsToReplace ) {
+        
+            let suitIdx = generateRandomDeckIndex(self.size)
+            let deckIdx = generateRandomDeckIndex(self.customDeckSize)
+            
+            let cardToReplaceWith: Card
+            
+            if self.bias == DeckBias.girlsDrinkMore {
+                cardToReplaceWith = Card(rank: DeckBias.girlsDrinkMore.rawValue, suit: self.suits[suitIdx / 13])
+            } else {
+                cardToReplaceWith = Card(rank: DeckBias.guysDrinkMore.rawValue, suit: self.suits[suitIdx / 13] )
+            }
+            
+            if self.deck[deckIdx].rank != cardToReplaceWith.rank {
+                self.deck[deckIdx] = cardToReplaceWith
+                i++
+            }
+            
+        }
     }
     
     
     func shuffle()
     {
-        for ( var i = 0; i < Int(self.size); i++ )
+        for ( var i = 0; i < Int(self.customDeckSize); i++)
         {
-            let idx = generateRandomDeckIndex()
+            let idx = generateRandomDeckIndex(self.customDeckSize)
             var tmp = self.deck[i]
             self.deck[i] = self.deck[idx]
             self.deck[idx] = tmp
@@ -119,7 +147,7 @@ class CardDeck
     
     func oneOffTheTop() -> Card?
     {
-        if self.deckPtr > Int(self.size) - 1 {
+        if self.deckPtr > Int(self.customDeckSize) - 1 {
             self.endOfDeck = true
             return nil
         }
@@ -128,6 +156,8 @@ class CardDeck
         // so reset to 0 to allow drawing to continue
         else if self.deckPtr < 0 {
             self.deckPtr = 0;
+        } else if deck.count < 1 {
+            return nil
         }
         
         
@@ -142,13 +172,35 @@ class CardDeck
         if self.deckPtr < 0 {
             return nil
         }
-        else if self.deckPtr > Int(self.size) - 1 {
-            self.deckPtr = Int(self.size) - 1
+        else if self.deckPtr > Int(self.customDeckSize) - 1 {
+            self.deckPtr = Int(self.customDeckSize) - 1
         }
         
         let card = self.deck[self.deckPtr--]
         
         return card
     }
+    
+    
+    func setDeckBias(value: DeckBias) {
+        self.bias = value
+    }
+    
+    func setDeckSize(value: Int) {
+        self.customDeckSize = value
+    }
+    
+    func getDeckBias() -> DeckBias {
+        return self.bias
+    }
+    
+    func getDeckPtr() -> Int {
+        return self.deckPtr
+    }
+    
+    func getDeckSize() -> Int {
+        return self.customDeckSize
+    }
+    
     
 }

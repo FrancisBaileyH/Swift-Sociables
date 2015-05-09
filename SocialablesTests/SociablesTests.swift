@@ -31,7 +31,8 @@ class SocialablesTests: XCTestCase {
      * given shuffle, with any deck size >= 52
     */
     func testAllCardsInDeck() {
-        
+        deck.setDeckBias(DeckBias.noBias)
+        deck.buildDeck()
         deck.shuffle()
         
         let cards = deck.deck
@@ -67,6 +68,28 @@ class SocialablesTests: XCTestCase {
         for suit in suits {
             XCTAssertGreaterThanOrEqual(suit.1, 13, "Assert there are 13 of each suit in the deck")
         }
+        
+    }
+    
+    
+    func testBiasInDeck() {
+        
+        deck.setDeckSize(60)
+        deck.setDeckBias(DeckBias.guysDrinkMore)
+        deck.buildDeck()
+        
+        let cards = deck.deck
+        
+        var i = 0
+        
+        for card in cards {
+            if card.rank == DeckBias.guysDrinkMore.rawValue {
+                i++
+            }
+        }
+        
+        
+        XCTAssertEqual(i, 7, "Assert applying a bias produces more girl drink cards")
         
     }
     

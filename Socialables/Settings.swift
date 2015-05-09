@@ -9,16 +9,26 @@
 import Foundation
 
 
+protocol SettingsDelegate {
+    func settingsDidChange()
+}
+
+
 
 class Settings {
     
     let settingsDB: NSUserDefaults
+    let notificationKey = "settingsChanged"
+    
     static let sharedInstance = Settings()
     
     
     let girlsDrinkMore  = ("girlsDrinkMore", false)
     let guysDrinkMore   = ("guysDrinkMore", false)
     let defaultDeckSize = ("deckSize", 52)
+    
+    var delegate: SettingsDelegate?
+    
     
     
     init() {
@@ -28,6 +38,7 @@ class Settings {
     
     internal func save(key: String, value: AnyObject) {
         settingsDB.setObject(value, forKey: key)
+         NSNotificationCenter.defaultCenter().postNotificationName(notificationKey, object: self)
     }
     
     
@@ -36,6 +47,7 @@ class Settings {
     */
     func setDeckSize(size: Int) {
         save(defaultDeckSize.0, value: size)
+        delegate?.settingsDidChange()
     }
     
     
@@ -48,13 +60,16 @@ class Settings {
         switch bias {
         
         case .girlsDrinkMore:
-            println("girls")
             save(girlsDrinkMore.0, value: value)
             break
         
         case .guysDrinkMore:
-            println("guys")
             save(guysDrinkMore.0, value: value)
+            break
+            
+        case .noBias:
+            save(girlsDrinkMore.0, value: false)
+            save(guysDrinkMore.0, value: false)
             break
             
         default:
@@ -78,12 +93,12 @@ class Settings {
         
         
         if girlBias != nil && (girlBias as! Bool) {
-            println("Girls bias: \(girlBias)")
-            return DeckBias.girlsDrinkMore
-        } else if guyBias != nil && (guyBias as! Bool) {
-            println("Guys bias: \(guyBias)")
-            return DeckBias.guysDrinkMore
-        } else {
+             return DeckBias.girlsDrinkMore
+        }
+        else if guyBias != nil && (guyBias as! Bool) {
+              return DeckBias.guysDrinkMore
+        }
+        else {
             return DeckBias.noBias
         }
     }
