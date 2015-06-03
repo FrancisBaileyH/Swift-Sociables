@@ -15,7 +15,7 @@ class RuleCollectionViewController: UIViewController, CellActionDelegate {
     @IBOutlet weak var ruleCollection: UICollectionView!
     
     let rm = RuleManager.sharedInstance
-    var rules = [CardAndRule]()
+    var rules = [CardAndRuleType]()
     
     
     /*
@@ -73,6 +73,8 @@ extension RuleCollectionViewController: UICollectionViewDataSource, UICollection
         cell.cardType.text = rule.rank
         cell.ruleTitle.text = rule.rule.title
         cell.ruleText.text = rule.rule.explanation
+        
+        
         
         cell.delegate = self
 

@@ -32,8 +32,8 @@ class CardDeck
     var deck = [Card]()
     var endOfDeck : Bool
     
-    let suits : [String] = [ "hearts", "spades", "diamonds", "clubs" ]
-    let ranks : [String] = [ "ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"]
+    let suits : [String] = [ "Hearts", "Spades", "Diamonds", "Clubs" ]
+    let ranks : [String] = [ "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"]
     
     var test : Int {
         get {
@@ -72,7 +72,6 @@ class CardDeck
     func buildDeck() {
         
         self.deck.removeAll(keepCapacity: false)
-        println(self.customDeckSize)
         
         for ( var i = 0; i < Int(self.customDeckSize); i++ )
         {
@@ -131,20 +130,17 @@ class CardDeck
     
     func shuffle()
     {
-        for ( var i = 0; i < Int(self.customDeckSize); i++)
-        {
-            let idx = generateRandomDeckIndex(self.customDeckSize)
-            var tmp = self.deck[i]
-            self.deck[i] = self.deck[idx]
-            self.deck[idx] = tmp
-            
+        for (var i = 0; i < 52 / 7; i++) {
+            self.deck.shuffle()
         }
-        
         // reset deckPtr
         self.deckPtr = 0
     }
     
     
+    /*
+     * Return the next card from the deck if there is one
+    */
     func oneOffTheTop() -> Card?
     {
         if self.deckPtr > Int(self.customDeckSize) - 1 {
@@ -167,6 +163,9 @@ class CardDeck
     }
     
     
+    /*
+     * Return the previous card from the deck, if there is one
+    */
     func returnToTop() -> Card?
     {
         if self.deckPtr < 0 {
@@ -181,6 +180,10 @@ class CardDeck
         return card
     }
     
+    
+    /*
+     * Getters and Setters
+    */
     
     func setDeckBias(value: DeckBias) {
         self.bias = value
@@ -204,3 +207,15 @@ class CardDeck
     
     
 }
+
+
+extension Array {
+    /// Shuffle the elements of `self` in-place.
+    mutating func shuffle() {
+        for i in 0..<(count - 1) {
+            let j = Int(arc4random_uniform(UInt32(count - i))) + i
+            swap(&self[i], &self[j])
+        }
+    }
+}
+

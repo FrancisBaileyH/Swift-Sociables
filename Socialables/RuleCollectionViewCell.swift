@@ -29,5 +29,4 @@ class RuleCollectionViewCell: UICollectionViewCell {
         delegate?.buttonPressed(self, action: "edit")
     }
     
-    
 }

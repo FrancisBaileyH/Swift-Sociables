@@ -1,9 +1,9 @@
 //
 //  ViewController.swift
-//  Socialables
+//  Sociables
 //
 //  Created by Francis Bailey on 2015-03-08.
-//  Copyright (c) 2015 Okanagan College. All rights reserved.
+//
 //
 
 import UIKit
@@ -27,10 +27,10 @@ class GameViewController: UIViewController, NavControllerDelegate, SettingsDeleg
     let settings = Settings.sharedInstance
     
     var newGame: Bool = true
+    var delaySettings: Bool = false
     
     
     let redTextColor = UIColor(red: 230, green: 0, blue: 0, alpha: 1)
-    
     
     
     override func viewDidLoad() {
@@ -74,7 +74,7 @@ class GameViewController: UIViewController, NavControllerDelegate, SettingsDeleg
     
     
     /*
-     * Handle menu events that do not result in a change of view Controllers
+     * Used to catch events fired from the menu
     */
     func menuEventDidFire(action: AnyObject) {
         let event = action as! String
@@ -85,6 +85,9 @@ class GameViewController: UIViewController, NavControllerDelegate, SettingsDeleg
     }
     
     
+    /*
+     * Handles the tap gesture on a card image
+    */
     func handleCardTap( sender: UITapGestureRecognizer ) {
         
         let card: Card?
@@ -99,33 +102,33 @@ class GameViewController: UIViewController, NavControllerDelegate, SettingsDeleg
                 showGameOverAlert()
             }
         }
-        
-        
-        
     }
     
     
+    /*
+     *  Update all UI elements for the game view
+    */
     func updateCardView( card: Card ) {
         
         if newGame {
             self.cardImage.image = UIImage(named: "blank-card")
             newGame = false
         }
-        
+      
         
         let textColor: UIColor!
-        var rank : String! = card.rank
         let suit : String! = card.suit
+        let img = UIImage(named: suit.lowercaseString)
         
-        let img = UIImage(named: suit)
-        
+        var rank : String! = card.rank
         let rule = rules.getRule(rank)
+        
         
         if (rank?.toInt() == nil) {
             rank = rank.substringToIndex(advance(rank.startIndex, 1)).capitalizedString
         }
         
-        if suit == "hearts" || suit == "diamonds" {
+        if suit == "Hearts" || suit == "Diamonds" {
             textColor = redTextColor
         }
         else {
@@ -194,31 +197,65 @@ class GameViewController: UIViewController, NavControllerDelegate, SettingsDeleg
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
+    /*
+    func showSettingsChangedPrompt() {
+        var alert = UIAlertController(title: "Settings Changed", message: "Game settings have changed while a game was in progress. Do you want to apply the settings now and start a new game?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: handleSettingsPromptAction))
+        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: handleSettingsPromptAction))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    
+    func handleSettingsPromptAction( action: UIAlertAction? ) {
+        
+        if action?.title == "Okay" {
+            self.startNewGame()
+        } else {
+            delaySettings = true
+        }
+    }*/
+    
+   
     
     /*
      * When settings have changed, this function is called automatically
      * updating the deck with the latest changes
     */
     func settingsDidChange() {
-        deck.setDeckBias(settings.getBias())
-        deck.setDeckSize(settings.getDeckSize())
-        
-        // Add prompt to see if deck should be reloaded after settings changed
-        deck.buildDeck()
-        self.startNewGame()
+        /*if !newGame {
+            //showSettingsChangedPrompt()
+            
+        } else {
+            updateDeckSettings()
+        }*/
+        updateDeckSettings()
+        startNewGame()
+    }
+    
+    
+    func updateDeckSettings() {
+        self.deck.setDeckBias(settings.getBias())
+        self.deck.setDeckSize(settings.getDeckSize())
+        self.deck.buildDeck()
     }
     
     
     /*
      * Method that handles button press from UIAlertController
     */
-    func handleNewGameOkayButtonPressed( alert: UIAlertAction? ) {
+    func handleNewGameOkayButtonPressed( action: UIAlertAction? ) {
         self.startNewGame()
     }
     
     
     func startNewGame()
     {
+        if delaySettings {
+            updateDeckSettings()
+            delaySettings = false
+        }
+        
         self.cardImage.image = UIImage(named: "start-card")
         self.deck.shuffle()
         self.topRank.text = ""
@@ -230,7 +267,6 @@ class GameViewController: UIViewController, NavControllerDelegate, SettingsDeleg
         self.cardCount.text = ""
         
         newGame = true
-        
     }
     
 }

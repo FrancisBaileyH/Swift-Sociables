@@ -16,13 +16,14 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var girlsDrinkMoreSwitch: UISwitch!
     @IBOutlet weak var guysDrinkMoreSwitch: UISwitch!
     @IBOutlet weak var deckSizeSlider: UISlider!
+    @IBOutlet weak var deckSizeLabel: UILabel!
     
     
     let settings = Settings.sharedInstance
     let rm = RuleManager.sharedInstance
     
-    var girlDrinksCardIsDefault: CardAndRule? = nil
-    var guyDrinksCardIsDefault: CardAndRule? = nil
+    var girlDrinksCardIsDefault: CardAndRuleType? = nil
+    var guyDrinksCardIsDefault: CardAndRuleType? = nil
     
     
     override func viewDidLoad() {
@@ -56,12 +57,16 @@ class SettingsViewController: UIViewController {
     }
     
     
+    /*
+     *  Check to see if a submitted rule is a custom rule
+     *  or a default rule. This is used to display a warning to
+     *  users if they try to save a default rule
+    */
     func checkIfCustomValue() -> Bool {
         
         girlDrinksCardIsDefault = rm.getRule(rm.defaultGirlsDrinkCard)
         guyDrinksCardIsDefault = rm.getRule(rm.defaultGuysDrinkCard)
         
-       
         if !girlDrinksCardIsDefault!.isDefault || !guyDrinksCardIsDefault!.isDefault {
             return false
         }
@@ -123,7 +128,11 @@ class SettingsViewController: UIViewController {
     
     
     @IBAction func numberSliderDidChange(sender: UISlider) {
-        settings.setDeckSize(Int(sender.value))
+        
+        let roundedValue = Int(sender.value)
+        
+        deckSizeLabel.text = String(stringInterpolationSegment: roundedValue)
+        settings.setDeckSize(roundedValue)
     }
     
     

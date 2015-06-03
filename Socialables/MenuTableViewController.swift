@@ -3,27 +3,17 @@
 //  Socialables
 //
 //  Created by Francis Bailey on 2015-04-30.
-//  Copyright (c) 2015 Okanagan College. All rights reserved.
 //
 
 import Foundation
-
-
-//
-//  MyMenuTableViewController.swift
-//  SwiftSideMenu
-//
-//  Created by Evgeny Nazarov on 29.09.14.
-//  Copyright (c) 2014 Evgeny Nazarov. All rights reserved.
-//
-
 import UIKit
+
 
 class MenuTableViewController: UITableViewController {
   
     
     
-    let menuItems = [ "New Game", "Rule Editor", "Settings" ]
+    let menuItems = [ "New Game", "Rules", "Settings" ]
     
     
     override func viewDidLoad() {
@@ -81,11 +71,8 @@ class MenuTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        
-        
         //Present new view controller
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
-        
         
         var destViewController : UIViewController?
         
@@ -108,15 +95,5 @@ class MenuTableViewController: UITableViewController {
             sideMenuController()?.sideMenu?.hideSideMenu()
         }
     }
-    
-    
-    /*
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    }
-    */
     
 }

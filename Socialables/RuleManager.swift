@@ -3,7 +3,6 @@
 //  Socialables
 //
 //  Created by Francis Bailey on 2015-03-20.
-//  Copyright (c) 2015 Okanagan College. All rights reserved.
 //
 
 import CoreData
@@ -15,7 +14,7 @@ struct RuleType {
     var explanation : String
 }
 
-struct CardAndRule {
+struct CardAndRuleType {
     var rule: RuleType
     var rank: String
     var isDefault: Bool
@@ -44,19 +43,19 @@ class RuleManager
     
     
     let defaultRules : [String: RuleType] = [
-        "ace"   : RuleType(title: "Waterfall", explanation: "Drink in a circle"),
+        "Ace"   : RuleType(title: "Waterfall", explanation: "Drink in a circle starting with the person who drew this card. When that person stops drinking the next person may also stop and so on, until the end of the cirlce is reached."),
         "2"     : RuleType(title: "Two is you", explanation: "Choose someone to drink"),
         "3"     : RuleType(title: "Three is me", explanation: "You drink"),
         "4"     : RuleType(title: "Whores", explanation: "Girls drink"),
-        "5"     : RuleType(title: "Never have I ever", explanation: "Go around in a circle saying something you've never done. When someone has done a total of 3 things mentioned, they drink"),
+        "5"     : RuleType(title: "Never have I ever", explanation: "Go around in a circle and say something you've never done. When someone has done a total of 3 things mentioned, they drink"),
         "6"     : RuleType(title: "Dicks", explanation: "Guys drink"),
         "7"     : RuleType(title: "Categories", explanation: "Pick a category such as sports teams or beer brands and go around in a circle with the next person saying something in the category. The first player who can't think of anything drinks."),
         "8"     : RuleType(title: "Date", explanation: "Choose another player to drink everytime you drink."),
-        "9"     : RuleType(title: "Rhyme", explanation: "Pick a word to rhyme. Players then go in a circle trying to rhyme with that word. The first person who can't think of rhyme drinks."),
-        "10"    : RuleType(title: "...", explanation: "..."),
-        "jack"  : RuleType(title: "...", explanation: "..."),
-        "queen" : RuleType(title: "Question Master", explanation: "You can now ask anyone a question, if they answer they drink. You stop being question master when the next Queen is drawn."),
-        "king"  : RuleType(title: "...", explanation: "...")
+        "9"     : RuleType(title: "Rhyme Time", explanation: "Pick a word to rhyme. Everyone goes in a circle trying to rhyme with that word. The first person who can't think of rhyme drinks."),
+        "10"    : RuleType(title: "Rule Card", explanation: "Pick a rule that must be followed for the rest of the game. If a person breaks the rule, they drink."),
+        "Jack"  : RuleType(title: "Eyes", explanation: "Everyone puts their head down and on the count of 3 looks up at a random person. If two people meet eyes, they drink. Repeat 3 times."),
+        "Queen" : RuleType(title: "Question Master", explanation: "You can now ask anyone questions, if they answer they drink. You stop being question master when the next Queen is drawn."),
+        "King"  : RuleType(title: "Sociables", explanation: "Everyone drinks!")
     ]
     
     
@@ -65,7 +64,7 @@ class RuleManager
      * Save a rule into persistent storage, if the rule already exists, then simply
      * update the rule return an error if one is found
     */
-    func saveRule( rule: CardAndRule )  -> NSError? {
+    func saveRule( rule: CardAndRuleType )  -> NSError? {
         
         var error: NSError?
         
@@ -124,7 +123,7 @@ class RuleManager
     */
     internal func fetchRuleFromStorage( rank: String ) -> NSManagedObject? {
        
-        let request = NSFetchRequest()
+        let request       = NSFetchRequest()
         request.entity    = ruleEntityDescription
         request.predicate = NSPredicate(format: "(" + Rule.ruleRankKey + " = %@)", rank)
         
@@ -144,16 +143,17 @@ class RuleManager
      * Fetch individual RuleType by rank, if no rule is found in
      * persistent storage, then return the default rule
     */
-    func getRule( rank : String ) -> CardAndRule {
+    func getRule( rank : String ) -> CardAndRuleType {
         
         if let rule = fetchRuleFromStorage(rank) {
             
             let title       = rule.valueForKey(Rule.ruleTitleKey) as! String
             let explanation = rule.valueForKey(Rule.ruleExplanationKey) as! String
             
-            return CardAndRule(rule: RuleType(title: title, explanation: explanation), rank: rank, isDefault: false)
+            return CardAndRuleType(rule: RuleType(title: title, explanation: explanation), rank: rank, isDefault: false)
         } else {
-            return CardAndRule(rule: defaultRules[rank]!, rank: rank, isDefault: true)
+            println(rank)
+            return CardAndRuleType(rule: defaultRules[rank]!, rank: rank, isDefault: true)
         }
     }
     
@@ -163,9 +163,9 @@ class RuleManager
      * to allow indexing of array. This most likely will change
      * in the future
     */
-    func getAllRules() -> [CardAndRule] {
+    func getAllRules() -> [CardAndRuleType] {
         
-        var rules = [CardAndRule]()
+        var rules = [CardAndRuleType]()
         var rulesTmp = [String: RuleType]()
         
         let request = NSFetchRequest(entityName: "Rule")
@@ -178,11 +178,10 @@ class RuleManager
         }
         
         for rule in defaultRules {
-            println(rule.0)
             if rulesTmp[rule.0] == nil {
-                  rules.append(CardAndRule(rule: RuleType(title: rule.1.title, explanation: rule.1.explanation), rank: rule.0, isDefault: true))
+                  rules.append(CardAndRuleType(rule: RuleType(title: rule.1.title, explanation: rule.1.explanation), rank: rule.0, isDefault: true))
             } else {
-                rules.append(CardAndRule(rule: rulesTmp[rule.0]!, rank: rule.0, isDefault: false))
+                rules.append(CardAndRuleType(rule: rulesTmp[rule.0]!, rank: rule.0, isDefault: false))
             }
         }
         

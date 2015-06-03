@@ -9,7 +9,7 @@
 import UIKit
 
 
-class RuleEditorViewController: UIViewController, UITextFieldDelegate {
+class RuleEditorViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     
     @IBOutlet weak var ruleTextField: UITextView!
@@ -30,7 +30,15 @@ class RuleEditorViewController: UIViewController, UITextFieldDelegate {
         ruleTitleField.text = ruleTitle
         cardTypeLabel.text = cardRank
         
-        ruleTextField.layer.borderWidth = 1
+        ruleTextField.delegate = self
+        ruleTitleField.delegate = self
+        ruleTextField.layer.borderWidth = 0
+        ruleTextField.layer.borderColor = UIColor.lightGrayColor().CGColor
+        ruleTextField.layer.cornerRadius = 5
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
+        tapRecognizer.numberOfTapsRequired = 1
+        self.view.addGestureRecognizer(tapRecognizer)
     }
     
     
@@ -45,7 +53,7 @@ class RuleEditorViewController: UIViewController, UITextFieldDelegate {
             self.presentViewController(message, animated: true, completion: nil)
         }
         else {
-            let rule = CardAndRule(rule: RuleType(title: ruleTitleField.text, explanation: ruleTextField.text), rank: cardTypeLabel.text!, isDefault: false)
+            let rule = CardAndRuleType(rule: RuleType(title: ruleTitleField.text, explanation: ruleTextField.text), rank: cardTypeLabel.text!, isDefault: false)
         
             if let err = rm.saveRule(rule) {
                 let warning = UIAlertController(title: "Error", message: "An error occurred and the rule was not successfully saved. Please try again.", preferredStyle: .Alert)
@@ -73,6 +81,18 @@ class RuleEditorViewController: UIViewController, UITextFieldDelegate {
         let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
         message.addAction(OKAction)
         self.presentViewController(message, animated: true, completion: nil)
+    }
+    
+    
+    
+    func handleSingleTap(recognizer: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     
