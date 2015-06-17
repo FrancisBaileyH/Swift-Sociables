@@ -26,7 +26,7 @@
                         <rect key="frame" x="20" y="333" width="441" height="43"/>
                     </variation>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="start-card" translatesAutoresizingMaskIntoConstraints="NO" id="neE-Uj-Lnx">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="start-card" translatesAutoresizingMaskIntoConstraints="NO" id="neE-Uj-Lnx">
                     <rect key="frame" x="-59" y="-173" width="598" height="826"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="neE-Uj-Lnx" secondAttribute="height" multiplier="29:40" id="Nb4-WN-nnV"/>

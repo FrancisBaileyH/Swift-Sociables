@@ -74,22 +74,25 @@ class SocialablesTests: XCTestCase {
     
     func testBiasInDeck() {
         
-        deck.setDeckSize(60)
-        deck.setDeckBias(DeckBias.guysDrinkMore)
-        deck.buildDeck()
+        for var i = 0; i < 10; i++ {
         
-        let cards = deck.deck
+            deck.setDeckSize(60)
+            deck.setDeckBias(DeckBias.guysDrinkMore)
+            deck.buildDeck()
         
-        var i = 0
+            let cards = deck.deck
         
-        for card in cards {
-            if card.rank == DeckBias.guysDrinkMore.rawValue {
-                i++
+            var i = 0
+        
+            for card in cards {
+                if card.rank == DeckBias.guysDrinkMore.rawValue {
+                    i++
+                }
             }
+        
+        
+            XCTAssertEqual(i, 7, "Assert applying a bias produces more guy drink cards")
         }
-        
-        
-        XCTAssertEqual(i, 7, "Assert applying a bias produces more girl drink cards")
         
     }
     

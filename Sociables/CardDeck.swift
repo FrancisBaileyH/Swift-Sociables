@@ -109,7 +109,8 @@ class CardDeck
             
             if self.bias == DeckBias.girlsDrinkMore {
                 cardToReplaceWith = Card(rank: DeckBias.girlsDrinkMore.rawValue, suit: self.suits[suitIdx / 13])
-            } else {
+            }
+            else {
                 cardToReplaceWith = Card(rank: DeckBias.guysDrinkMore.rawValue, suit: self.suits[suitIdx / 13] )
             }
             
