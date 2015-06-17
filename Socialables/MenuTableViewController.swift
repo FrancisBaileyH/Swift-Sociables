@@ -35,10 +35,8 @@ class MenuTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // Return the number of sections.
         return 1
     }
     
