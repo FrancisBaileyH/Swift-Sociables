@@ -3,7 +3,6 @@
 //  Socialables
 //
 //  Created by Francis Bailey on 2015-03-08.
-//  Copyright (c) 2015 Okanagan College. All rights reserved.
 //
 
 import Foundation
@@ -49,17 +48,12 @@ class CardDeck
     
     
     
-    init()
-    {
-        // build deck
+    init() {
+
         bias = DeckBias.noBias
         
         self.customDeckSize = size
-        
         self.deckPtr = 0
-        
-        
-        // shuffle deck after initialization
         self.endOfDeck = false
     }
     
@@ -80,7 +74,7 @@ class CardDeck
             if i >= Int(self.size) {
                 idx = generateRandomDeckIndex(self.size)
             }
-            self.deck.append(Card(rank: self.ranks[idx % 13], suit: self.suits[idx / 13])) // append card object with  rule title - rule name - card name
+            self.deck.append(Card(rank: self.ranks[idx % 13], suit: self.suits[idx / 13]))
         }
         
         if bias != DeckBias.noBias {

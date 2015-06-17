@@ -12,6 +12,7 @@ import UIKit
 struct RuleType {
     var title : String
     var explanation : String
+    var order: Int
 }
 
 struct CardAndRuleType {
@@ -19,6 +20,7 @@ struct CardAndRuleType {
     var rank: String
     var isDefault: Bool
 }
+
 
 
 class RuleManager
@@ -42,20 +44,20 @@ class RuleManager
     
     
     
-    let defaultRules : [String: RuleType] = [
-        "Ace"   : RuleType(title: "Waterfall", explanation: "Drink in a circle starting with the person who drew this card. When that person stops drinking the next person may also stop and so on, until the end of the cirlce is reached."),
-        "2"     : RuleType(title: "Two is you", explanation: "Choose someone to drink"),
-        "3"     : RuleType(title: "Three is me", explanation: "You drink"),
-        "4"     : RuleType(title: "Whores", explanation: "Girls drink"),
-        "5"     : RuleType(title: "Never have I ever", explanation: "Go around in a circle and say something you've never done. When someone has done a total of 3 things mentioned, they drink"),
-        "6"     : RuleType(title: "Dicks", explanation: "Guys drink"),
-        "7"     : RuleType(title: "Categories", explanation: "Pick a category such as sports teams or beer brands and go around in a circle with the next person saying something in the category. The first player who can't think of anything drinks."),
-        "8"     : RuleType(title: "Date", explanation: "Choose another player to drink everytime you drink."),
-        "9"     : RuleType(title: "Rhyme Time", explanation: "Pick a word to rhyme. Everyone goes in a circle trying to rhyme with that word. The first person who can't think of rhyme drinks."),
-        "10"    : RuleType(title: "Rule Card", explanation: "Pick a rule that must be followed for the rest of the game. If a person breaks the rule, they drink."),
-        "Jack"  : RuleType(title: "Eyes", explanation: "Everyone puts their head down and on the count of 3 looks up at a random person. If two people meet eyes, they drink. Repeat 3 times."),
-        "Queen" : RuleType(title: "Question Master", explanation: "You can now ask anyone questions, if they answer they drink. You stop being question master when the next Queen is drawn."),
-        "King"  : RuleType(title: "Sociables", explanation: "Everyone drinks!")
+    static let defaultRules : [String: RuleType] = [
+        "Ace"   : RuleType(title: "Waterfall", explanation: "Drink in a circle starting with the person who drew this card. When that person stops drinking the next person may also stop and so on, until the end of the cirlce is reached.", order: 1),
+        "2"     : RuleType(title: "Two is you", explanation: "Choose someone to drink", order: 2),
+        "3"     : RuleType(title: "Three is me", explanation: "You drink", order: 3),
+        "4"     : RuleType(title: "Whores", explanation: "Girls drink", order: 4),
+        "5"     : RuleType(title: "Never have I ever", explanation: "Go around in a circle and say something you've never done. When someone has done a total of 3 things mentioned, they drink", order: 5),
+        "6"     : RuleType(title: "Dicks", explanation: "Guys drink", order: 6),
+        "7"     : RuleType(title: "Categories", explanation: "Pick a category such as sports teams or beer brands and go around in a circle with the next person saying something in the category. The first player who can't think of anything drinks.", order: 7),
+        "8"     : RuleType(title: "Date", explanation: "Choose another player to drink everytime you drink.", order: 8),
+        "9"     : RuleType(title: "Rhyme Time", explanation: "Pick a word to rhyme. Everyone goes in a circle trying to rhyme with that word. The first person who can't think of rhyme drinks.", order: 9),
+        "10"    : RuleType(title: "Rule Card", explanation: "Pick a rule that must be followed for the rest of the game. If a person breaks the rule, they drink.", order: 10),
+        "Jack"  : RuleType(title: "Eyes", explanation: "Everyone puts their head down and on the count of 3 looks up at a random person. If two people meet eyes, they drink. Repeat 3 times.", order: 11),
+        "Queen" : RuleType(title: "Question Master", explanation: "You can now ask anyone questions, if they answer they drink. You stop being question master when the next Queen is drawn.", order: 12),
+        "King"  : RuleType(title: "Sociables", explanation: "Everyone drinks!", order: 13)
     ]
     
     
@@ -149,11 +151,12 @@ class RuleManager
             
             let title       = rule.valueForKey(Rule.ruleTitleKey) as! String
             let explanation = rule.valueForKey(Rule.ruleExplanationKey) as! String
+            let order = RuleManager.defaultRules[rank]?.order
             
-            return CardAndRuleType(rule: RuleType(title: title, explanation: explanation), rank: rank, isDefault: false)
-        } else {
-            println(rank)
-            return CardAndRuleType(rule: defaultRules[rank]!, rank: rank, isDefault: true)
+            return CardAndRuleType(rule: RuleType(title: title, explanation: explanation, order: order! ), rank: rank, isDefault: false)
+        }
+        else {
+            return CardAndRuleType(rule: RuleManager.defaultRules[rank]!, rank: rank, isDefault: true)
         }
     }
     
@@ -172,20 +175,40 @@ class RuleManager
         let persistentRules = coreData.executeFetchRequest(request, error: nil) as? [Rule]
         
         if persistentRules?.count > 0 {
+            
             for rule in persistentRules! {
-                rulesTmp.updateValue(RuleType(title: rule.title, explanation: rule.explanation), forKey: rule.rank)
+                let order = RuleManager.defaultRules[rule.rank.capitalizedString]?.order
+                
+                println(rule.rank)
+                
+                rulesTmp.updateValue(RuleType(title: rule.title, explanation: rule.explanation, order: order!), forKey: rule.rank)
             }
         }
         
-        for rule in defaultRules {
+        for rule in RuleManager.defaultRules {
+            
             if rulesTmp[rule.0] == nil {
-                  rules.append(CardAndRuleType(rule: RuleType(title: rule.1.title, explanation: rule.1.explanation), rank: rule.0, isDefault: true))
+                let order = RuleManager.defaultRules[rule.0]?.order
+                rules.append(CardAndRuleType(rule: RuleType(title: rule.1.title, explanation: rule.1.explanation, order: order!), rank: rule.0, isDefault: true))
             } else {
                 rules.append(CardAndRuleType(rule: rulesTmp[rule.0]!, rank: rule.0, isDefault: false))
             }
         }
         
-        return rules
+        return sortRules(rules)
+    }
+    
+    
+    /*
+     * Sort rules by order established in the RuleType struct
+    */
+    func sortRules(rules: [CardAndRuleType]) -> [CardAndRuleType] {
+        
+        var sortedRules = rules
+        
+        sortedRules.sort({ $0.rule.order < $1.rule.order })
+   
+        return sortedRules
     }
     
     

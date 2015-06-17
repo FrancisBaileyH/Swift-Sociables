@@ -3,7 +3,6 @@
 //  Socialables
 //
 //  Created by Francis Bailey on 2015-05-03.
-//  Copyright (c) 2015 Okanagan College. All rights reserved.
 //
 
 import UIKit
@@ -53,7 +52,9 @@ class RuleEditorViewController: UIViewController, UITextFieldDelegate, UITextVie
             self.presentViewController(message, animated: true, completion: nil)
         }
         else {
-            let rule = CardAndRuleType(rule: RuleType(title: ruleTitleField.text, explanation: ruleTextField.text), rank: cardTypeLabel.text!, isDefault: false)
+            
+            let order = RuleManager.defaultRules[cardTypeLabel.text!]?.order
+            let rule = CardAndRuleType(rule: RuleType(title: ruleTitleField.text, explanation: ruleTextField.text, order: order!), rank: cardTypeLabel.text!, isDefault: false)
         
             if let err = rm.saveRule(rule) {
                 let warning = UIAlertController(title: "Error", message: "An error occurred and the rule was not successfully saved. Please try again.", preferredStyle: .Alert)

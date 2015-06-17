@@ -3,7 +3,6 @@
 //  Socialables
 //
 //  Created by Francis Bailey on 2015-05-03.
-//  Copyright (c) 2015 Okanagan College. All rights reserved.
 //
 
 import UIKit
@@ -61,23 +60,19 @@ class RuleCollectionViewController: UIViewController, CellActionDelegate {
 
 
 
-extension RuleCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension RuleCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = ruleCollection.dequeueReusableCellWithReuseIdentifier("RuleViewCell", forIndexPath: indexPath) as! RuleCollectionViewCell
-        
         let rule = rules[indexPath.row]
         
         cell.cardType.text = rule.rank
         cell.ruleTitle.text = rule.rule.title
         cell.ruleText.text = rule.rule.explanation
         
-        
-        
         cell.delegate = self
-
         
         return cell
     }
@@ -85,6 +80,14 @@ extension RuleCollectionViewController: UICollectionViewDataSource, UICollection
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return rules.count
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+            
+            return CGSizeMake(collectionView.bounds.size.width, 190)
     }
     
 }
