@@ -3,7 +3,7 @@
 //  Socialables
 //
 //  Created by Francis Bailey on 2015-05-03.
-//  Copyright (c) 2015 Okanagan College. All rights reserved.
+//  
 //
 
 import UIKit
@@ -28,7 +28,10 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        deckSizeSlider.value = Float(settings.getDeckSize())
+        let initialDeckSize = Float(settings.getDeckSize())
+        deckSizeSlider.value = initialDeckSize
+        deckSizeLabel.text = String(stringInterpolationSegment: Int(initialDeckSize))
+        
         
         let bias = settings.getBias()
               
@@ -58,9 +61,9 @@ class SettingsViewController: UIViewController {
     
     
     /*
-     *  Check to see if a submitted rule is a custom rule
-     *  or a default rule. This is used to display a warning to
-     *  users if they try to save a default rule
+     *  Check to see if the cards required for making a gender drink more are default or not.
+     *  If they aren't default we'll want to warn the user and prevent any action from occurring
+     *  on these respective switches
     */
     func checkIfCustomValue() -> Bool {
         

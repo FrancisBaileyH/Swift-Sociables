@@ -3,7 +3,7 @@
 //  Sociables
 //
 //  Created by Francis Bailey on 2015-05-05.
-//  Copyright (c) 2015 Okanagan College. All rights reserved.
+//  
 //
 
 import Foundation

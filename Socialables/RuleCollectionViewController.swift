@@ -43,9 +43,12 @@ class RuleCollectionViewController: UIViewController, CellActionDelegate {
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
         
             let ruleEditor = mainStoryboard.instantiateViewControllerWithIdentifier("RuleEditorViewController") as! RuleEditorViewController
+            let title = cell.ruleTitle.text
+            let range = Range(start: advance(title!.startIndex, 1),
+                end: advance(title!.endIndex, -1))
         
-        
-            ruleEditor.ruleTitle = cell.ruleTitle.text
+            
+            ruleEditor.ruleTitle = cell.ruleTitle.text?.substringWithRange(range)
             ruleEditor.ruleText = cell.ruleText.text
             ruleEditor.cardRank = cell.cardType.text
 
@@ -69,7 +72,7 @@ extension RuleCollectionViewController: UICollectionViewDataSource, UICollection
         let rule = rules[indexPath.row]
         
         cell.cardType.text = rule.rank
-        cell.ruleTitle.text = rule.rule.title
+        cell.ruleTitle.text = "\"" + rule.rule.title + "\""
         cell.ruleText.text = rule.rule.explanation
         
         cell.delegate = self

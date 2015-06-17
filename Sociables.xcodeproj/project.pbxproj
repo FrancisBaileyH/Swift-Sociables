@@ -27,7 +27,6 @@
 		B37F29211AF611DD000A933D /* RuleEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37F29201AF611DD000A933D /* RuleEditorViewController.swift */; };
 		B37F29241AF62298000A933D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37F29231AF62298000A933D /* SettingsViewController.swift */; };
 		B37F292E1AF6C6E9000A933D /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37F292D1AF6C6E9000A933D /* Rule.swift */; };
-		B39D459F1B1EC5060072ABFB /* BlurImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39D459E1B1EC5060072ABFB /* BlurImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +63,6 @@
 		B37F29201AF611DD000A933D /* RuleEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleEditorViewController.swift; sourceTree = "<group>"; };
 		B37F29231AF62298000A933D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B37F292D1AF6C6E9000A933D /* Rule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
-		B39D459E1B1EC5060072ABFB /* BlurImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,7 +197,6 @@
 			children = (
 				B37F291C1AF60509000A933D /* RuleCollectionViewController.swift */,
 				B37F29201AF611DD000A933D /* RuleEditorViewController.swift */,
-				B39D459E1B1EC5060072ABFB /* BlurImage.swift */,
 				B37F291E1AF6054F000A933D /* RuleCollectionViewCell.swift */,
 			);
 			name = RuleManagement;
@@ -307,7 +304,6 @@
 			files = (
 				B37F291F1AF6054F000A933D /* RuleCollectionViewCell.swift in Sources */,
 				B347B35A1AF34860007C882D /* ENSideMenu.swift in Sources */,
-				B39D459F1B1EC5060072ABFB /* BlurImage.swift in Sources */,
 				04F2B6B71AAD58A100869C24 /* GameViewController.swift in Sources */,
 				B37F29211AF611DD000A933D /* RuleEditorViewController.swift in Sources */,
 				04F2B6B51AAD58A100869C24 /* Sociables.xcdatamodeld in Sources */,

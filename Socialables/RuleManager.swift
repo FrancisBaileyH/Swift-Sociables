@@ -178,9 +178,6 @@ class RuleManager
             
             for rule in persistentRules! {
                 let order = RuleManager.defaultRules[rule.rank.capitalizedString]?.order
-                
-                println(rule.rank)
-                
                 rulesTmp.updateValue(RuleType(title: rule.title, explanation: rule.explanation, order: order!), forKey: rule.rank)
             }
         }
