@@ -9,12 +9,39 @@ import CoreData
 import UIKit
 
 
+/**
+ * @struct RuleType
+ *
+ * @abstract
+ *      Contains the values used to store a rule and represent it visually. 
+ *
+ * @field title
+ *      The name of the rule
+ * @field explanation
+ *      The accompanying text explaining how the rule works
+ * @field order
+ *      The order in which to display the rules in a list
+*/
 struct RuleType {
     var title : String
     var explanation : String
     var order: Int
 }
 
+
+/**
+ * @struct CardAndRuleType
+ *
+ * @abstract
+ *      Binds the RuleType to a given card
+ *
+ * @field rule
+ *      A RuleType to bind
+ * @field rank
+ *      The rank to bind the rule to
+ * @field isDefault
+ *      A helper value to determine if the rule is a custom one or not
+*/
 struct CardAndRuleType {
     var rule: RuleType
     var rank: String
@@ -37,6 +64,9 @@ class RuleManager
     let defaultGuysDrinkCard = DeckBias.guysDrinkMore.rawValue
     
     
+    /**
+     * Establish a connection to coreData
+    */
     init() {
         coreData = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
         ruleEntityDescription = NSEntityDescription.entityForName("Rule", inManagedObjectContext: coreData)!
@@ -62,9 +92,15 @@ class RuleManager
     
     
     
-    /*
+    /**
      * Save a rule into persistent storage, if the rule already exists, then simply
-     * update the rule return an error if one is found
+     * update the rule 
+     *
+     * @param
+     *      A CardAndRuleType containing all values required to save the rule
+     *
+     * @return
+     *      If an error occurs an automatically generated NSError object will be returned
     */
     func saveRule( rule: CardAndRuleType )  -> NSError? {
         
@@ -90,8 +126,14 @@ class RuleManager
     }
     
     
-    /*
+    /**
      * Remove a rule in persistent storage
+     *
+     * @param rank 
+     *      A case sensitive card rank
+     *
+     * @return NSError?
+     *      If the rule was not found return a user friendly error
     */
     func removePersistentRule( rank: String ) -> NSError? {
         
@@ -110,7 +152,7 @@ class RuleManager
     }
     
     
-    /*
+    /**
      * Remove all rules in persistent storage
     */
     func removeAllPersistentRules() {
@@ -118,10 +160,14 @@ class RuleManager
     }
     
     
-    
-    /*
-     * Attempt to fetch the Rule from persistent storage
-     * if no rule is found nil will be returned
+    /**
+     * Attempt to fetch a rule from CoreData
+     *
+     * @param rank
+     *      A case sensitive card rank
+     *
+     * @return NSManagedObject?
+     *      A coredata object representing the rule fetched, if a rule for that rank was found
     */
     internal func fetchRuleFromStorage( rank: String ) -> NSManagedObject? {
        
@@ -140,10 +186,15 @@ class RuleManager
     }
     
     
-    
-    /*
+    /**
      * Fetch individual RuleType by rank, if no rule is found in
      * persistent storage, then return the default rule
+     *
+     * @param rank
+     *      A case sensitive card rank
+     *
+     *  @return CardAndRuleType
+     *      A struct containing the rule and the card
     */
     func getRule( rank : String ) -> CardAndRuleType {
         
@@ -161,10 +212,12 @@ class RuleManager
     }
     
     
-    /*
-     * Fetch all RuleTypes, but return as an array of CardAndRuleType types
-     * to allow indexing of array. This most likely will change
-     * in the future
+    /**
+     * Fetch all custom rules form core data and union the results with 
+     * the default rules, creating a complete rule set
+     *
+     * @return [CardAndRuleType]
+     *      An array of structs containing both a rule and respective card tyoe
     */
     func getAllRules() -> [CardAndRuleType] {
         
@@ -196,8 +249,14 @@ class RuleManager
     }
     
     
-    /*
+    /**
      * Sort rules by order established in the RuleType struct
+     *
+     * @param rules
+     *      An array of CardAndRuleTypes to be sorted
+     *
+     * @return [CardAndRuleType]
+     *      An array of CardAndRuleTypes sorted by the order field in the rule value
     */
     func sortRules(rules: [CardAndRuleType]) -> [CardAndRuleType] {
         
@@ -207,8 +266,5 @@ class RuleManager
    
         return sortedRules
     }
-    
-    
-    
     
 }

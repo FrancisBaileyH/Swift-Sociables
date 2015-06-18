@@ -8,12 +8,36 @@
 import Foundation
 
 
+/**
+ * @struct Card
+ *
+ * @abstract 
+ *      represents a physical deck card
+ *
+ * @field rank 
+ *      represents the Card's rank (Ace to King)
+ * @field suit 
+ *      represents a Card's suit (Hearts, Spades, Diamonds, Clubs)
+*/
 struct Card {
     var rank : String
     var suit : String
 }
 
 
+/**
+ * @enum DeckBias
+ *
+ * @abstract 
+ *      Represents a bias that may be applied to the deck of cards
+ *
+ * @constant girlsDrinkMore 
+ *      In Sociables the girls drink card is card 4
+ * @constant guysDrinkMore 
+ *      In Sociables the guys drink card is card 6
+ * @constant noBias 
+ *      used to apply no bias to the deck
+*/
 enum DeckBias: String {
     case girlsDrinkMore = "4"
     case guysDrinkMore = "6"
@@ -34,15 +58,6 @@ class CardDeck
     let suits : [String] = [ "Hearts", "Spades", "Diamonds", "Clubs" ]
     let ranks : [String] = [ "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"]
     
-    var test : Int {
-        get {
-            return self.test
-        }
-        set(value) {
-            self.test = value
-        }
-    }
-    
     
     static let sharedInstance = CardDeck()
     
@@ -59,9 +74,8 @@ class CardDeck
     
     
     /*
-     * First build a normal deck of cards
-     * any number greater than 52, we will now just grab a random card
-     * from the available set of cards
+     * Build a normal deck and for any deck size greater than 52
+     * generate a random card from the default deck and insert it
     */
     func buildDeck() {
         
@@ -78,15 +92,18 @@ class CardDeck
         }
         
         if bias != DeckBias.noBias {
-            applyBias()
+            self.applyBias()
         }
         
-        shuffle()
+        self.shuffle()
     }
     
     
-    /*
-     * Generate a random number between 0 and the size of the deck - 1
+    /**
+     * Generate a random number
+     *
+     * @return 
+     *      A random number between 0 and size of the deck minus 1
     */
     func generateRandomDeckIndex(deckSize: Int) -> Int {
         return Int(arc4random_uniform(UInt32(deckSize)))
@@ -94,6 +111,18 @@ class CardDeck
     
     
     
+    /**
+     * Shuffle the deck and reset the deck pointer
+    */
+    func shuffle() {
+        self.deck.fullShuffle()
+        self.deckPtr = -1
+    }
+    
+    
+    /**
+     * Replace random cards in the deck with the card defined by the type of DeckBias
+    */
     private func applyBias() {
         
         let numCardsToReplace: Int = self.customDeckSize / 16
@@ -123,56 +152,44 @@ class CardDeck
     }
     
     
-    func shuffle()
-    {
-        for (var i = 0; i < 52 / 7; i++) {
-            self.deck.shuffle()
-        }
-        // reset deckPtr
-        self.deckPtr = 0
-    }
-    
     
     /*
-     * Return the next card from the deck if there is one
+     * Retrieve the next card from the deck if there is one
+     *
+     * @return 
+     *      The next card in the card deck
     */
-    func oneOffTheTop() -> Card?
-    {
-        if self.deckPtr > Int(self.customDeckSize) - 1 {
+    func oneOffTheTop() -> Card? {
+        if self.deckPtr >= Int(self.customDeckSize) - 1 {
             self.endOfDeck = true
             return nil
         }
-            
-        // the deckPtr may have been set to less than 0
-        // so reset to 0 to allow drawing to continue
-        else if self.deckPtr < 0 {
-            self.deckPtr = 0;
-        } else if deck.count < 1 {
+        else if deck.count < 1 {
             return nil
         }
         
-        
-        let card = self.deck[self.deckPtr++]
+        let card = self.deck[++self.deckPtr]
         
         return card
     }
     
     
-    /*
-     * Return the previous card from the deck, if there is one
+    /*!
+     * Retrieves the previous card in the card deck
+     *
+     * @return 
+     *      The previous card from the deck
     */
-    func returnToTop() -> Card?
-    {
-        if self.deckPtr < 0 {
-            return nil
+    func returnToTop() -> Card {
+        if self.deckPtr <= 0 {
+            self.deckPtr = 0
+            return self.deck[self.deckPtr]
         }
         else if self.deckPtr > Int(self.customDeckSize) - 1 {
             self.deckPtr = Int(self.customDeckSize) - 1
         }
         
-        let card = self.deck[self.deckPtr--]
-        
-        return card
+        return self.deck[--self.deckPtr]
     }
     
     
@@ -210,6 +227,12 @@ extension Array {
         for i in 0..<(count - 1) {
             let j = Int(arc4random_uniform(UInt32(count - i))) + i
             swap(&self[i], &self[j])
+        }
+    }
+    
+    mutating func fullShuffle() {
+        for i in 0...7 {
+            self.shuffle()
         }
     }
 }

@@ -151,7 +151,7 @@ class GameViewController: UIViewController, NavControllerDelegate, SettingsDeleg
         self.cardRule.text = rule.rule.explanation
 
         self.cardCount.textColor = textColor
-        self.cardCount.text = "\(self.deck.getDeckPtr())/\(self.deck.getDeckSize())"
+        self.cardCount.text = "\(self.deck.getDeckPtr() + 1)/\(self.deck.getDeckSize())"
     }
     
    
